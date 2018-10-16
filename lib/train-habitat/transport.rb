@@ -1,5 +1,4 @@
 require 'train/plugins'
-
 require 'train-habitat/connection'
 
 module TrainPlugins

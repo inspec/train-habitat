@@ -1,9 +1,12 @@
 require 'net/http'
 require 'json'
+require 'train-habitat/platform'
 
 module TrainPlugins
   module Habitat
     class Connection < Train::Plugins::Transport::BaseConnection
+      include TrainPlugins::Habitat::Platform
+
       def initialize(options)
         msg = 'Habitat host serving HTTP Gateway is required'
         raise Train::TransportError, msg if options.nil? || options[:host].nil?
