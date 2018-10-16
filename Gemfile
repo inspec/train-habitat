@@ -7,6 +7,7 @@ gemspec
 group :development do
   gem 'bundler'
   gem 'minitest'
+  gem 'pry'
   gem 'rake'
   gem 'rubocop', '= 0.49.1'
 end

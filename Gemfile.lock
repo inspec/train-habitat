@@ -23,6 +23,7 @@ GEM
     azure_mgmt_resources (0.17.2)
       ms_rest_azure (~> 0.11.0)
     builder (3.2.3)
+    coderay (1.1.2)
     concurrent-ruby (1.0.5)
     declarative (0.0.10)
     declarative-option (0.1.0)
@@ -70,6 +71,7 @@ GEM
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
     memoist (0.16.0)
+    method_source (0.9.0)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2018.0812)
@@ -95,6 +97,9 @@ GEM
     parser (2.5.1.2)
       ast (~> 2.4.0)
     powerpack (0.1.2)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     public_suffix (3.0.3)
     rainbow (2.2.2)
       rake
@@ -160,6 +165,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   minitest
+  pry
   rake
   rubocop (= 0.49.1)
   train-habitat!
