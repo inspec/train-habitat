@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TrainPlugins::Habitat
   module Platform
     def platform
