@@ -1,2 +1,5 @@
 require 'minitest/autorun'
-require 'minitest/mock'
+require 'minitest/spec'
+
+require 'train'
+require './lib/train-habitat'
