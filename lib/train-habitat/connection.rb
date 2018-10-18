@@ -9,8 +9,8 @@ module TrainPlugins
     class Connection < Train::Plugins::Transport::BaseConnection
       include TrainPlugins::Habitat::Platform
 
-      def initialize(options)
-        if options.dig(:host).nil?
+      def initialize(options = {})
+        if options.nil? || options[:host].nil?
           raise Train::TransportError, 'Habitat host serving HTTP Gateway is required'
         end
 
