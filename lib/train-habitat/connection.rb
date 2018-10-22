@@ -16,6 +16,10 @@ module TrainPlugins
         end
 
         super(options)
+        @cache_enabled[:api_call] = true
+        @cache[:api_call]         = {}
+
+        enable_cache :api_call
       end
 
       def uri
@@ -26,7 +30,7 @@ module TrainPlugins
       def habitat_client
         return HTTPGateway.new(@options[:host]) unless cache_enabled?(:api_call)
 
-        @cache.dig(:api_call, :HTTPGateway) || HTTPGateway.new(@options[:host])
+        @cache[:api_call][:HTTPGateway] ||= HTTPGateway.new(@options[:host])
       end
     end
   end

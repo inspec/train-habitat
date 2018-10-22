@@ -7,8 +7,9 @@ require './lib/train-habitat/connection'
 describe TrainPlugins::Habitat::Connection do
   subject { TrainPlugins::Habitat::Connection }
 
-  let(:opt)  { { host: 'habitat01.inspec.io' } }
-  let(:conn) { subject.new(opt) }
+  let(:opt)   { { host: 'habitat01.inspec.io' } }
+  let(:conn)  { subject.new(opt) }
+  let(:cache) { conn.instance_variable_get(:@cache) }
 
   describe 'connection definition' do
     it 'should inherit from the Train Connection base' do
@@ -49,6 +50,26 @@ describe TrainPlugins::Habitat::Connection do
   describe '#habitat_client' do
     it 'should return kind of TrainPlugins::Habitat::HTTPGateway' do
       conn.habitat_client.must_be_kind_of TrainPlugins::Habitat::HTTPGateway
+    end
+
+    it 'returns a new instance when cache is disabled' do
+      conn.disable_cache(:api_call)
+      client_one = conn.habitat_client
+      client_two = conn.habitat_client
+
+      cache[:api_call].count.must_equal 0
+      client_one.object_id.wont_equal client_two.object_id
+    end
+
+    it 'returns the same instance when cache is enabled' do
+      cache[:api_call].count.must_equal 0
+      conn.enable_cache(:api_call)
+
+      client_one = conn.habitat_client
+      client_two = conn.habitat_client
+
+      cache[:api_call].count.must_equal 1
+      client_one.object_id.must_equal client_two.object_id
     end
   end
 end
