@@ -2,6 +2,7 @@
 
 require 'net/http'
 require 'json'
+require 'train-habitat/httpgateway'
 require 'train-habitat/platform'
 
 module TrainPlugins
@@ -26,18 +27,6 @@ module TrainPlugins
         return HTTPGateway.new(@options[:host]) unless cache_enabled?(:api_call)
 
         @cache.dig(:api_call, :HTTPGateway) || HTTPGateway.new(@options[:host])
-      end
-    end
-
-    class HTTPGateway
-      attr_reader :uri
-
-      def initialize(host)
-        @uri = URI("http://#{host}:9631/services")
-      end
-
-      def services
-        JSON.parse(Net::HTTP.get_response(uri))
       end
     end
   end

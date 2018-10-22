@@ -16,7 +16,6 @@ describe TrainPlugins::Habitat::Connection do
       (subject < Train::Plugins::Transport::BaseConnection).must_equal(true)
     end
 
-    # Since this is an API-type connection, we do not implement these three.
     %i(
       file_via_connection
       run_command_via_connection
@@ -28,7 +27,6 @@ describe TrainPlugins::Habitat::Connection do
       end
     end
 
-    # Ensure Train knows this is not local.
     it 'should declare itself as a non-local transport' do
       subject.new(opt).local?.must_equal(false)
     end
@@ -44,22 +42,13 @@ describe TrainPlugins::Habitat::Connection do
 
   describe '#uri' do
     it 'should have the correct habitat uri' do
-      conn.uri.must_equal 'habitat://habitat01.inspec.io'
+      conn.uri.must_equal "habitat://#{opt[:host]}"
     end
   end
 
   describe '#habitat_client' do
     it 'should return kind of TrainPlugins::Habitat::HTTPGateway' do
       conn.habitat_client.must_be_kind_of TrainPlugins::Habitat::HTTPGateway
-    end
-  end
-
-  describe TrainPlugins::Habitat::HTTPGateway do
-    subject { TrainPlugins::Habitat::HTTPGateway.new(opt[:host]) }
-
-    it '#new' do
-      subject.must_be_kind_of TrainPlugins::Habitat::HTTPGateway
-      subject.uri.must_be_kind_of URI
     end
   end
 end
