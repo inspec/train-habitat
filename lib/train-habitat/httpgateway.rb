@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'illegal_state_error'
 
 require 'net/http'
@@ -22,10 +23,16 @@ module TrainPlugins
           svc.dig('pkg', 'origin') == origin && svc.dig('pkg', 'name') == name
         end
 
-        raise IllegalStateError.new("Expected one service '#{origin}/#{name}', but found none.") if service.empty?
-        raise IllegalStateError.new("Expected one service '#{origin}/#{name}', but found multiple.") if service.size > 1
+        validate!(service, origin, name)
 
         service.first
+      end
+
+      private
+
+      def validate!(service, origin, name)
+        raise NoServicesFoundError.new(origin, name) if service.empty?
+        raise MultipleservicesFoundError.new(origin, name) if service.size > 1
       end
     end
   end

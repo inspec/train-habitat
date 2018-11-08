@@ -6,3 +6,6 @@ Style/Documentation:
   Enabled: false
 Naming/FileName:
   Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'test/unit/httpgateway_test.rb'

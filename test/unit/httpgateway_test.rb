@@ -9,12 +9,16 @@ describe TrainPlugins::Habitat::HTTPGateway do
   let(:host) { 'habitat01.inspec.io' }
   let(:single_service) do
     mock = Minitest::Mock.new
-    def mock.body; File.read('test/unit/data/single_response.json'); end
+    def mock.body
+      File.read('test/unit/data/single_response.json')
+    end
     mock
   end
   let(:multiple_services) do
     mock = Minitest::Mock.new
-    def mock.body; File.read('test/unit/data/multiple_response.json'); end
+    def mock.body
+      File.read('test/unit/data/multiple_response.json')
+    end
     mock
   end
 
@@ -51,7 +55,8 @@ describe TrainPlugins::Habitat::HTTPGateway do
         subject.service('core', 'nginx')
       end
 
-      assert_equal("Expected one service 'core/nginx', but found multiple.", err.message)
+      message = "Expected one service 'core/nginx', but found multiple."
+      assert_equal(message, err.message)
     end
   end
 
@@ -61,7 +66,8 @@ describe TrainPlugins::Habitat::HTTPGateway do
         subject.service('foo', 'bar')
       end
 
-      assert_equal("Expected one service 'foo/bar', but found none.", err.message)
+      message = "Expected one service 'foo/bar', but found none."
+      assert_equal(message, err.message)
     end
   end
 end
