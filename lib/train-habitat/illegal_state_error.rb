@@ -12,7 +12,7 @@ class NoServicesFoundError < IllegalStateError
   end
 end
 
-class MultipleservicesFoundError < IllegalStateError
+class MultipleServicesFoundError < IllegalStateError
   def initialize(origin, name)
     super("Expected one service '#{origin}/#{name}', but found multiple.")
   end

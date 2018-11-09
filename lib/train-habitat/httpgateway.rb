@@ -19,20 +19,31 @@ module TrainPlugins
       end
 
       def service(origin, name)
-        service = services.select do |svc|
-          svc.dig('pkg', 'origin') == origin && svc.dig('pkg', 'name') == name
-        end
+        selected = services.select(&by_origin(origin))
+                           .select(&by_name(name))
 
-        validate!(service, origin, name)
+        validate!(selected, origin, name)
 
-        service.first
+        selected.first
       end
 
       private
 
+      def by_origin(origin)
+        lambda do |s|
+          s.dig('pkg', 'origin') == origin
+        end
+      end
+
+      def by_name(name)
+        lambda do |s|
+          s.dig('pkg', 'name') == name
+        end
+      end
+
       def validate!(service, origin, name)
         raise NoServicesFoundError.new(origin, name) if service.empty?
-        raise MultipleservicesFoundError.new(origin, name) if service.size > 1
+        raise MultipleServicesFoundError.new(origin, name) if service.size > 1
       end
     end
   end
