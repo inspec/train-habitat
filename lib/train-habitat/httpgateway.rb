@@ -22,28 +22,20 @@ module TrainPlugins
         selected = services.select(&by_origin(origin))
                            .select(&by_name(name))
 
-        validate!(selected, origin, name)
-
         selected.first
+      ensure
+        raise NoServicesFoundError.new(origin, name) if selected.empty?
+        raise MultipleServicesFoundError.new(origin, name) if selected.size > 1
       end
 
       private
 
       def by_origin(origin)
-        lambda do |s|
-          s.dig('pkg', 'origin') == origin
-        end
+        ->(s) { s.dig('pkg', 'origin') == origin }
       end
 
       def by_name(name)
-        lambda do |s|
-          s.dig('pkg', 'name') == name
-        end
-      end
-
-      def validate!(service, origin, name)
-        raise NoServicesFoundError.new(origin, name) if service.empty?
-        raise MultipleServicesFoundError.new(origin, name) if service.size > 1
+        ->(s) { s.dig('pkg', 'name') == name }
       end
     end
   end
