@@ -16,9 +16,7 @@ module TrainPlugins
       def initialize(options = {})
         @transport_options = options
 
-        unless api_options_provided? || cli_options_provided?
-          raise Train::TransportError, "Habitat connection options that begin with either 'cli' or 'api' required"
-        end
+        validate_transport_options!
 
         super(transport_options)
         enable_cache :api_call
@@ -38,7 +36,7 @@ module TrainPlugins
         end
       end
 
-      # Use this to execuute a `hab` command. Do not include the `hab` executable in the invocation.
+      # Use this to execute a `hab` command. Do not include the `hab` executable in the invocation.
       def run_hab_cli(command, exec_options = {})
         raise CliNotAvailableError(cli_tranport_names) unless cli_options_provided?
         initialize_cli_connection!
@@ -54,6 +52,31 @@ module TrainPlugins
       end
 
       private
+
+      def validate_transport_options!
+        unless api_options_provided? || cli_options_provided?
+          raise Train::TransportError, "Habitat connection options that begin with either 'cli' or 'api' required"
+        end
+
+        valid_cli_prefixes = TrainPlugins::Habitat::Transport.cli_transport_prefixes.keys.map(&:to_s)
+        seen_cli_options = transport_options.keys.map(&:to_s).select { |n| n.start_with?('cli_') }
+
+        # All seen CLI options must start with a recognized prefix
+        options_by_prefix = {}
+        seen_cli_options.each do |option|
+          prefix = valid_cli_prefixes.detect { |p| option.start_with?(p) }
+          unless prefix
+            raise Train::TransportError, "All Habitat CLI connection options must begin with a recognized prefix (#{valid_cli_prefixes.join(', ')}) - saw #{option}"
+          end
+          options_by_prefix[prefix] ||= []
+          options_by_prefix[prefix] << option
+        end
+
+        # Only one prefix may be used (don't mix and match)
+        if options_by_prefix.count > 1
+          raise Train::TransportError, "Only one set of Habitat CLI connection options may be used - saw #{options_by_prefix.keys.join(', ')}"
+        end
+      end
 
       def cli_transport_names
         TrainPlugins::Habitat::Transport.cli_transport_prefixes.values

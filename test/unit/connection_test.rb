@@ -11,6 +11,10 @@ describe TrainPlugins::Habitat::Connection do
   let(:conn)  { subject.new(opt) }
   let(:cache) { conn.instance_variable_get(:@cache) }
 
+  # =========================================================================== #
+  #                         Constructor and Basics
+  # =========================================================================== #
+
   describe 'connection definition' do
     it 'should inherit from the Train Connection base' do
       # For Class, '<' means 'is a descendant of'
@@ -36,6 +40,9 @@ describe TrainPlugins::Habitat::Connection do
     end
   end
 
+  # =========================================================================== #
+  #                                 API Options
+  # =========================================================================== #
   describe '#api_options_provided?' do
     describe 'when api options are present' do
       let(:opt) { { api_url: 'http://somewhere.com' } }
@@ -46,8 +53,8 @@ describe TrainPlugins::Habitat::Connection do
     describe 'when api options are absent' do
       let(:opt) { { cli_test_host: 'somewhere.com'} }
       it 'should not find the options' do
-        mock_ctp = Minitest::Mock.new
-        mock_ctp.expect(:call, { cli_test: :test })
+        mock_ctp = mock()
+        mock_ctp.expects(:call).returns({ cli_test: :test }).at_least_once
         TrainPlugins::Habitat::Transport.stub(:cli_transport_prefixes, mock_ctp) do
           conn.api_options_provided?.must_equal false
         end
@@ -55,13 +62,15 @@ describe TrainPlugins::Habitat::Connection do
     end
   end
 
+  # =========================================================================== #
+  #                              CLI Options
+  # =========================================================================== #
   describe '#cli_options_provided?' do
     describe 'when cli options are present' do
       let(:opt) { { cli_test_host: 'somewhere.com'} }
       it 'should find the options' do
-        mock_ctp = Minitest::Mock.new
-        mock_ctp.expect(:call, { cli_test: :test })
-        mock_ctp.expect(:call, { cli_test: :test })
+        mock_ctp = mock()
+        mock_ctp.expects(:call).returns({ cli_test: :test }).at_least_once
         TrainPlugins::Habitat::Transport.stub(:cli_transport_prefixes, mock_ctp) do
           conn.cli_options_provided?.must_equal true
         end
@@ -71,8 +80,8 @@ describe TrainPlugins::Habitat::Connection do
     describe 'when cli options are absent' do
       let(:opt) { { api_host: 'somewhere.com'} }
       it 'should not find the options' do
-        mock_ctp = Minitest::Mock.new
-        mock_ctp.expect(:call, { cli_test: :test })
+        mock_ctp = mock()
+        mock_ctp.expects(:call).returns({ cli_test: :test }).at_least_once
         TrainPlugins::Habitat::Transport.stub(:cli_transport_prefixes, mock_ctp) do
           conn.cli_options_provided?.must_equal false
         end
@@ -87,6 +96,43 @@ describe TrainPlugins::Habitat::Connection do
     end
   end
 
+  describe 'when CLI options for multiple transports are passed' do
+    let(:opt) { { cli_test1_host: 'somewhere.com', cli_test2_host: 'elsewhere.com' } }
+    it 'should reject them' do
+      mock_ctp = mock()
+      mock_ctp.expects(:call).returns({ cli_test1: :test1, cli_test2: :test2 }).at_least_once
+      TrainPlugins::Habitat::Transport.stub(:cli_transport_prefixes, mock_ctp) do
+        assert_raises(Train::TransportError) { conn }
+      end
+    end
+  end
+
+  describe 'when unrecognized CLI options are passed' do
+    let(:opt) { { cli_test3_host: 'somewhere.com' } }
+    it 'should reject them' do
+      mock_ctp = mock()
+      mock_ctp.expects(:call).returns({ cli_test1: :test1 }).at_least_once
+      TrainPlugins::Habitat::Transport.stub(:cli_transport_prefixes, mock_ctp) do
+        assert_raises(Train::TransportError) { conn }
+      end
+    end
+  end
+
+  # =========================================================================== #
+  #                         Running Hab CLI commands
+  # =========================================================================== #
+  # TODO
+  # describe 'when cli non-transport options are passed' do
+  #   it 'should recognize them' do
+  #      # such as hab path
+  #      # such as env vars
+  #   end
+  # end
+
+
+  # =========================================================================== #
+  #                                API Client
+  # =========================================================================== #
 
   describe '#habitat_api_client' do
     it 'should return kind of TrainPlugins::Habitat::HTTPGateway' do
