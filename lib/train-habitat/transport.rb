@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+require 'train'
 require 'train/plugins'
 require 'train-habitat/connection'
 
@@ -19,8 +18,8 @@ module TrainPlugins
 
       def self.cli_transport_prefixes
         {
-          # TODO: add transports here, prefix => transport name
-          #                          cli_ssh => :ssh
+          # add transports here, prefix => transport name
+          # cli_ssh: :ssh,
         }
       end
 

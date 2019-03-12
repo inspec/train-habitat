@@ -51,9 +51,9 @@ describe TrainPlugins::Habitat::Connection do
       end
     end
     describe 'when api options are absent' do
-      let(:opt) { { cli_test_host: 'somewhere.com'} }
+      let(:opt) { { cli_test_host: 'somewhere.com' } }
       it 'should not find the options' do
-        mock_ctp = mock()
+        mock_ctp = mock
         mock_ctp.expects(:call).returns({ cli_test: :test }).at_least_once
         TrainPlugins::Habitat::Transport.stub(:cli_transport_prefixes, mock_ctp) do
           conn.api_options_provided?.must_equal false
@@ -67,9 +67,9 @@ describe TrainPlugins::Habitat::Connection do
   # =========================================================================== #
   describe '#cli_options_provided?' do
     describe 'when cli options are present' do
-      let(:opt) { { cli_test_host: 'somewhere.com'} }
+      let(:opt) { { cli_test_host: 'somewhere.com' } }
       it 'should find the options' do
-        mock_ctp = mock()
+        mock_ctp = mock
         mock_ctp.expects(:call).returns({ cli_test: :test }).at_least_once
         TrainPlugins::Habitat::Transport.stub(:cli_transport_prefixes, mock_ctp) do
           conn.cli_options_provided?.must_equal true
@@ -78,9 +78,9 @@ describe TrainPlugins::Habitat::Connection do
     end
 
     describe 'when cli options are absent' do
-      let(:opt) { { api_host: 'somewhere.com'} }
+      let(:opt) { { api_host: 'somewhere.com' } }
       it 'should not find the options' do
-        mock_ctp = mock()
+        mock_ctp = mock
         mock_ctp.expects(:call).returns({ cli_test: :test }).at_least_once
         TrainPlugins::Habitat::Transport.stub(:cli_transport_prefixes, mock_ctp) do
           conn.cli_options_provided?.must_equal false
@@ -90,7 +90,7 @@ describe TrainPlugins::Habitat::Connection do
   end
 
   describe 'when neither cli nor api options are present' do
-    let(:opt) { { host: 'somewhere.com'} }
+    let(:opt) { { host: 'somewhere.com' } }
     it 'should not find the options' do
       assert_raises(Train::TransportError) { conn }
     end
@@ -99,7 +99,7 @@ describe TrainPlugins::Habitat::Connection do
   describe 'when CLI options for multiple transports are passed' do
     let(:opt) { { cli_test1_host: 'somewhere.com', cli_test2_host: 'elsewhere.com' } }
     it 'should reject them' do
-      mock_ctp = mock()
+      mock_ctp = mock
       mock_ctp.expects(:call).returns({ cli_test1: :test1, cli_test2: :test2 }).at_least_once
       TrainPlugins::Habitat::Transport.stub(:cli_transport_prefixes, mock_ctp) do
         assert_raises(Train::TransportError) { conn }
@@ -110,7 +110,7 @@ describe TrainPlugins::Habitat::Connection do
   describe 'when unrecognized CLI options are passed' do
     let(:opt) { { cli_test3_host: 'somewhere.com' } }
     it 'should reject them' do
-      mock_ctp = mock()
+      mock_ctp = mock
       mock_ctp.expects(:call).returns({ cli_test1: :test1 }).at_least_once
       TrainPlugins::Habitat::Transport.stub(:cli_transport_prefixes, mock_ctp) do
         assert_raises(Train::TransportError) { conn }
@@ -128,7 +128,6 @@ describe TrainPlugins::Habitat::Connection do
   #      # such as env vars
   #   end
   # end
-
 
   # =========================================================================== #
   #                                API Client

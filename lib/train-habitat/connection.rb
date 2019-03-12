@@ -37,9 +37,10 @@ module TrainPlugins
       end
 
       # Use this to execute a `hab` command. Do not include the `hab` executable in the invocation.
-      def run_hab_cli(command, exec_options = {})
+      def run_hab_cli(command, _exec_options = {})
         raise CliNotAvailableError(cli_tranport_names) unless cli_options_provided?
-        # TODO - leverage exec_options to add things like JSON parsing, ENV setting, etc.
+
+        # TODO: - leverage exec_options to add things like JSON parsing, ENV setting, etc.
         cli_connection.run_command(hab_path + ' ' + command)
       end
 
@@ -67,6 +68,7 @@ module TrainPlugins
           unless prefix
             raise Train::TransportError, "All Habitat CLI connection options must begin with a recognized prefix (#{valid_cli_prefixes.join(', ')}) - saw #{option}"
           end
+
           options_by_prefix[prefix] ||= []
           options_by_prefix[prefix] << option
         end
@@ -98,17 +100,17 @@ module TrainPlugins
         seen_cli_transports = {}
         transport_options.each do |xport_option_name, xport_option_value|
           known_prefixes.each do |prefix|
-            if xport_option_name.to_s.start_with?(prefix)
-              xport_name = TrainPlugins::Habitat::Transport.cli_transport_prefixes[prefix.to_sym]
+            next unless xport_option_name.to_s.start_with?(prefix)
 
-              seen_cli_transports[xport_name] ||= {}
-              # Remove the prefix from the option and store under transport name
-              seen_cli_transports[xport_name][xport_option_name.to_s.sub(/^#{prefix}_/,'').to_sym] = xport_option_value
-            end
+            xport_name = TrainPlugins::Habitat::Transport.cli_transport_prefixes[prefix.to_sym]
+
+            seen_cli_transports[xport_name] ||= {}
+            # Remove the prefix from the option and store under transport name
+            seen_cli_transports[xport_name][xport_option_name.to_s.sub(/^#{prefix}_/, '').to_sym] = xport_option_value
           end
         end
 
-        raise MultipleCliTransportsError.new(seen_cli_tranports.keys) if seen_cli_transports.count > 1
+        raise MultipleCliTransportsError, seen_cli_tranports.keys if seen_cli_transports.count > 1
 
         @cli_transport_name = seen_cli_transports.keys.first
         @cli_connection = Train.create(cli_transport_name, seen_cli_transports[cli_transport_name])
