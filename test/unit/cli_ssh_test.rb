@@ -4,7 +4,6 @@ require 'train-habitat/connection'
 require 'train'
 require 'train/transports/ssh'
 
-
 describe TrainPlugins::Habitat::Connection do
   subject { TrainPlugins::Habitat::Connection }
   let(:conn) { subject.new(opt) }

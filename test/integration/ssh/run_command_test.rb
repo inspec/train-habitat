@@ -22,7 +22,7 @@ describe 'Using the SSH CLI transport' do
       result = hab_conn.run_hab_cli('--version')
       result.exit_status.must_equal 0
       # "hab 0.77.0/20190301212334\n"
-      result.stdout.must_match /^hab\s+\d+\.\d+\.\d+\/\d+\n/
+      result.stdout.must_match %r{^hab\s+\d+\.\d+\.\d+/\d+\n}
     end
   end
 
@@ -33,7 +33,7 @@ describe 'Using the SSH CLI transport' do
       result.exit_status.must_equal 0
       # package                           type        desired  state  elapsed (s)  pid   group\n
       # core/httpd/2.4.35/20190307151146  standalone  up       up     28521        1407  httpd.default\n
-      result.stdout.must_match /^package\s+type\s+/
+      result.stdout.must_match(/^package\s+type\s+/)
     end
   end
 end
