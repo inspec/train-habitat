@@ -2,8 +2,6 @@
 
 require 'rake/testtask'
 require 'rubocop/rake_task'
-require 'kitchen'
-require 'kitchen/rake_tasks'
 
 RuboCop::RakeTask.new(:lint) do |t|
   require 'train/globals'

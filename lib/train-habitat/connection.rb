@@ -11,7 +11,7 @@ module TrainPlugins
     class Connection < Train::Plugins::Transport::BaseConnection
       include TrainPlugins::Habitat::Platform
 
-      attr_reader :cli_transport_name, :cli_connection, :transport_options
+      attr_reader :cli_transport_name, :cli_connection, :cli_transport, :transport_options
 
       def initialize(options = {})
         @transport_options = options
@@ -42,6 +42,10 @@ module TrainPlugins
 
         # TODO: - leverage exec_options to add things like JSON parsing, ENV setting, etc.
         cli_connection.run_command(hab_path + ' ' + command)
+      end
+
+      def hab_path
+        '/bin/hab'
       end
 
       def habitat_api_client
@@ -87,7 +91,7 @@ module TrainPlugins
         transport_options.keys.map(&:to_s).any? { |option_name| option_name.start_with? prefix }
       end
 
-      def initialize_cli_connection!
+      def initialize_cli_connection! # rubocop: disable Metrics/AbcSize
         return if @cli_connection
         raise CliNotAvailableError(cli_tranport_names) unless cli_options_provided?
 
@@ -98,7 +102,12 @@ module TrainPlugins
         known_prefixes = TrainPlugins::Habitat::Transport.cli_transport_prefixes.keys.map(&:to_s)
 
         seen_cli_transports = {}
+        non_specific_options = {} # Things like :logger, :sudo, etc
         transport_options.each do |xport_option_name, xport_option_value|
+          unless xport_option_name.to_s.start_with?('cli_')
+            non_specific_options[xport_option_name] = xport_option_value
+            next
+          end
           known_prefixes.each do |prefix|
             next unless xport_option_name.to_s.start_with?(prefix)
 
@@ -113,7 +122,9 @@ module TrainPlugins
         raise MultipleCliTransportsError, seen_cli_tranports.keys if seen_cli_transports.count > 1
 
         @cli_transport_name = seen_cli_transports.keys.first
-        @cli_connection = Train.create(cli_transport_name, seen_cli_transports[cli_transport_name])
+        final_train_options = seen_cli_transports[cli_transport_name].merge(non_specific_options)
+        @cli_transport = Train.create(cli_transport_name, final_train_options)
+        @cli_connection = cli_transport.connection
       end
     end
   end
