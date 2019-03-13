@@ -38,11 +38,17 @@ namespace(:test) do
       end
     end
 
-    # desc 'Use some cli transport to talk to supervisor'
-    # task :cli_thing => [:sup_start, :cli_thing_actual, :sup_shutdown]
-    # task :cli_thing_actual do
-    #   # Your code goes here
-    # end
+    desc 'Use ssh cli transport to talk to supervisor'
+    task cli_ssh: [:sup_start, :cli_ssh_actual, :sup_shutdown]
+    Rake::TestTask.new(:cli_ssh_actual) do |t|
+      t.description = nil
+      t.libs.push 'lib'
+      t.test_files = FileList[
+        'test/integration/ssh/*_test.rb',
+      ]
+      t.verbose = true
+      t.warning = false
+    end
   end
 end
 
