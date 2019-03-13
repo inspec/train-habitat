@@ -91,7 +91,7 @@ module TrainPlugins
         transport_options.keys.map(&:to_s).any? { |option_name| option_name.start_with? prefix }
       end
 
-      def initialize_cli_connection! # rubocop: disable Metrics/AbcSize
+      def initialize_cli_connection! # rubocop:disable Metrics/AbcSize
         return if @cli_connection
         raise CliNotAvailableError(cli_tranport_names) unless cli_options_provided?
 

@@ -94,7 +94,7 @@ describe TrainPlugins::Habitat::Connection do
     let(:opt) { { cli_test1_host: 'somewhere.com', cli_test2_host: 'elsewhere.com' } }
     it 'should reject them' do
       TrainPlugins::Habitat::Transport.expects(:cli_transport_prefixes) \
-        .returns({ cli_test1: :test1, cli_test2: :test2}).at_least_once
+                                      .returns({ cli_test1: :test1, cli_test2: :test2 }).at_least_once
       assert_raises(Train::TransportError) { conn }
     end
   end
