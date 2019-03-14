@@ -22,9 +22,9 @@ module TrainPlugins
 
         resp = Response.new
         resp.raw_response = Net::HTTP.get_response(uri)
-        resp.code = resp.raw_response.code
+        resp.code = resp.raw_response.code.to_i
         if resp.code == 200
-          resp.body = JSON.parse(resp.raw_response.body)
+          resp.body = JSON.parse(resp.raw_response.body, symbolize_names: true)
         end
         resp
       end

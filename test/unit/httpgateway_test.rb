@@ -46,7 +46,8 @@ describe TrainPlugins::Habitat::HTTPGateway do
       Net::HTTP.stubs(:get_response).returns(service_response_mock)
 
       response = hgw.get_path('/service') # No exception thrown
-      response.body.must_be_kind_of Array # Apparently they always send as an array
+      response.body.must_be_kind_of Array # Apparently they always send us an array
+      response.body[0].keys[0].must_be_kind_of Symbol # We symbolize the keys
       response.raw_response.body.must_be_kind_of String
     end
   end
