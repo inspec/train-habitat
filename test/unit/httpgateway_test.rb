@@ -28,13 +28,13 @@ describe TrainPlugins::Habitat::HTTPGateway do
     let(:opts) { { url: 'http://habitat01.inspec.io:9631' } }
     let(:service_response_mock) do
       service_mock = mock
-      service_mock.expects(:code).returns(200)
+      service_mock.expects(:status).returns(200)
       service_mock.expects(:body).returns(File.read('test/unit/data/single_response.json')).at_least_once
       service_mock
     end
 
     it 'should be able to get paths' do
-      Net::HTTP.stubs(:get_response).returns(service_response_mock)
+      HTTPClient.any_instance.stubs(:get).returns(service_response_mock)
 
       response = hgw.get_path('/service') # No exception thrown
       response.wont_be_nil
@@ -43,12 +43,31 @@ describe TrainPlugins::Habitat::HTTPGateway do
     end
 
     it 'should automatically unpack JSON responses' do
-      Net::HTTP.stubs(:get_response).returns(service_response_mock)
+      HTTPClient.any_instance.stubs(:get).returns(service_response_mock)
 
       response = hgw.get_path('/service') # No exception thrown
       response.body.must_be_kind_of Array # Apparently they always send us an array
       response.body[0].keys[0].must_be_kind_of Symbol # We symbolize the keys
       response.raw_response.body.must_be_kind_of String
+    end
+
+    describe 'when an auth token is set' do
+      let(:opts) do
+        {
+          url: 'http://habitat01.inspec.io:9631',
+          auth_token: 'some-secret',
+        }
+      end
+      it 'should send it as an HTTP header' do
+        HTTPClient.any_instance.expects(:get) \
+          .returns(service_response_mock) \
+          .with() { |_url, _query, headers| headers == {'Authorization' => 'Bearer some-secret'} }
+
+        response = hgw.get_path('/service') # No exception thrown
+        response.wont_be_nil
+        response.code.must_equal 200
+      end
+
     end
   end
 end

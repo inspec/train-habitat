@@ -1,5 +1,5 @@
 require 'uri'
-require 'net/http'
+require 'httpclient'
 
 module TrainPlugins
   module Habitat
@@ -14,6 +14,8 @@ module TrainPlugins
         if base_uri.port == 80 && opts[:url] !~ %r{\w+:\d+(\/|$)}
           base_uri.port = 9631
         end
+
+        @auth_token = opts[:auth_token]
       end
 
       def get_path(path)
@@ -21,12 +23,23 @@ module TrainPlugins
         uri.path = path
 
         resp = Response.new
-        resp.raw_response = Net::HTTP.get_response(uri)
-        resp.code = resp.raw_response.code.to_i
+        client = HTTPClient.new
+        headers = {}
+        unless auth_token.nil?
+          headers['Authorization'] = 'Bearer ' + auth_token # Set bearer token, see https://www.habitat.sh/docs/using-habitat/#authentication
+        end
+
+        resp.raw_response = client.get(uri, {}, headers)
+        resp.code = resp.raw_response.status
         if resp.code == 200
           resp.body = JSON.parse(resp.raw_response.body, symbolize_names: true)
         end
         resp
+      end
+
+      # Private accessor
+      def auth_token
+        @auth_token
       end
     end
   end
