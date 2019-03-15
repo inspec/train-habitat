@@ -10,10 +10,10 @@ end
 
 namespace(:test) do
   desc 'Run all integration tests'
-  task integration: %i(integration:cli_local)
+  task integration: %i(integration:cli_ssh)
 
   Rake::TestTask.new(:unit) do |t|
-    t.libs.push 'lib'
+    t.libs.concat %w{test lib}
     t.test_files = FileList[
       'test/unit/*_test.rb',
     ]
@@ -42,7 +42,7 @@ namespace(:test) do
     task cli_ssh: [:sup_start, :cli_ssh_actual, :sup_shutdown]
     Rake::TestTask.new(:cli_ssh_actual) do |t|
       t.description = nil
-      t.libs.push 'lib'
+      t.libs.concat %w{test lib}
       t.test_files = FileList[
         'test/integration/ssh/*_test.rb',
       ]
