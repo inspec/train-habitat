@@ -36,12 +36,31 @@ CLI options are moore varied, and are entirely dependent on the underlying trans
 Train.create(:habitat, {cli_radio_band: 'VHF', cli_radio_channel: 23})
 ```
 
-train-habitat will use the prefixes to identify the underlying transport and use it to connect to a location that can provide access to the `hab` CLI tool.
+`train-habitat` identifies the underlying "sub-transport" using the prefixes of the provided options. For example, if you pass an option named `cli_ssh_host`, `train-habitat` will recognize that you intend to use the SSH transport to connect to a location that has access to the `hab` CLI tool.
 
-It is an error to specify more than one CLI sub-transport.
+You may specify many options referring to the same sub-transport (such as credentials), but it is an error to specify more than one CLI sub-transport.
 
 Currently supported CLI transports include:
-* TODO - fill in SSH options on SSH PR
+ * SSH
+
+Plans for future support include (in approximate order):
+ * WinRM
+ * Local
+ * Docker
+
+#### General Options
+
+Any options not prefixed with `cli_` or `api_` are also passed to the CLI transport. This means you can use generic Train connection options such as the `sudo` and `shell` sets of options (see [train source code](https://github.com/inspec/train/blob/71679307903fc8853e09abd93f3901c83800e019/lib/train/extras/command_wrapper.rb#L31).)
+
+#### SSH Options
+
+`train-habitat` can accept any option that the Train SSH Transport accepts, if the prefix `cli_ssh_` is added. This includes:
+
+ * `cli_ssh_host` - String hostname or IP address
+ * `cli_ssh_user` - String user to connect as
+ * `cli_ssh_key_files` - Array of paths to private key files to use
+
+Other options are available; see [train source code](https://github.com/inspec/train/blob/71679307903fc8853e09abd93f3901c83800e019/lib/train/transports/ssh.rb#L45) for details.
 
 ## Development
 
