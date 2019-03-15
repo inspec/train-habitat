@@ -40,11 +40,11 @@ namespace(:test) do
 
     desc 'Use HTTP API to talk to supervisor'
     task api: [:sup_start, :api_actual, :sup_shutdown]
-    task :api_actual do |t|
+    Rake::TestTask.new(:api_actual) do |t|
       t.description = nil # Hide this task
       t.libs.push 'lib'
       t.test_files = FileList[
-        'test/integration/api/*_test.rb',
+        'test/integration/http-api/*_test.rb',
       ]
       t.verbose = true
       t.warning = false
