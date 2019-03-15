@@ -1,7 +1,7 @@
 require_relative '../../helper'
 require 'train-habitat'
 
-describe 'Listing services via the HTTP Gateway API' do # rubocop:disable Metrics/BlockLength
+describe 'Listing services via the HTTP Gateway API' do
   let(:opts) { { api_url: 'http://127.0.0.1:9631' } } # From Vagrantfile
   let(:conn) { Train.create(:habitat, opts).connection }
   let(:hac) { conn.habitat_api_client }

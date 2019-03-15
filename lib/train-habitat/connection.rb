@@ -78,6 +78,7 @@ module TrainPlugins
           unless prefix
             raise Train::TransportError, "All Habitat CLI connection options must begin with a recognized prefix (#{valid_cli_prefixes.join(', ')}) - saw #{option}"
           end
+
           options_by_prefix[prefix] ||= []
           options_by_prefix[prefix] << option
         end
