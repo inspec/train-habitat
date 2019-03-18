@@ -38,9 +38,7 @@ module TrainPlugins
       end
 
       # Private accessor
-      def auth_token
-        @auth_token
-      end
+      attr_reader :auth_token
     end
   end
 end

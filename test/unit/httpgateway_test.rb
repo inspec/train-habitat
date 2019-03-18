@@ -1,7 +1,7 @@
 require './test/helper'
 require './lib/train-habitat/httpgateway'
 
-describe TrainPlugins::Habitat::HTTPGateway do
+describe TrainPlugins::Habitat::HTTPGateway do # rubocop:disable Metrics/BlockLength
   let(:hgw) { TrainPlugins::Habitat::HTTPGateway.new(opts) }
   describe 'when a full URL is provided' do
     let(:opts) { { url: 'http://habitat01.inspec.io:9631' } }
@@ -60,8 +60,8 @@ describe TrainPlugins::Habitat::HTTPGateway do
       end
       it 'should send it as an HTTP header' do
         HTTPClient.any_instance.expects(:get) \
-          .returns(service_response_mock) \
-          .with() { |_url, _query, headers| headers == {'Authorization' => 'Bearer some-secret'} }
+                  .returns(service_response_mock) \
+                  .with { |_url, _query, headers| headers == { 'Authorization' => 'Bearer some-secret' } }
 
         response = hgw.get_path('/service') # No exception thrown
         response.wont_be_nil
