@@ -26,7 +26,11 @@ When creating a train-habitat Connection, there are thus two sets of options, pr
 
 #### api_url
 
-* TODO - fill in on modernization PR
+An HTTP or HTTPS URL which identifies a Supervisor HTTP Gateway.  If the port is omitted from the URL, the API standard port of 9631 is assumed; to use port 80, specify it explicitly.
+
+#### api_auth_token
+
+The supervisor may be configured to require [Bearer Token Authorization](https://www.habitat.sh/docs/using-habitat/#monitor-services-through-the-http-api), in which the client and the gateway use a pre-shared secret. Specify the secret here to use this feature.
 
 ### CLI Mode options
 
