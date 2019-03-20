@@ -1,6 +1,6 @@
 # Train-Habitat
 
-Train Plugin for connecting to Habitat installations
+`train-habitat` is a Train plugin and is used as a Train Transport to connect to Habitat installations.
 
 ## To Install this as a User
 
@@ -8,9 +8,49 @@ You will need InSpec v2.3 or later.
 
 Simply run:
 
+```
 $ inspec plugin install train-habitat
+```
 
-## Using the plugin as a Train Transport
+## Using train-habitat from InSpec
+
+As train-habitat takes potentially many options, it is simplest to list the options in your `~/.inspec/config.json` file, then used the named set of options with `-t`.
+
+For example, if your config file contains:
+
+```
+{
+  "file_version": "1.1",
+  "credentials": {
+    "habitat": {
+      "dev-hab": {
+        "api_url": "http://dev-hab.my-corp.io",
+        "cli_ssh_host": "dev-hab.my-corp.io"
+      },
+      "prod-hab": {
+        "api_url": "https://prod-hab.my-corp.io",
+        "api_auth_token": "opensesame"
+      },
+    }
+  }
+}
+```
+
+Using this configuration, you could execute:
+
+```
+$ inspec exec some-profile -t habitat://dev-hab
+# Or
+$ inspec exec some-profile -t habitat://prod-hab
+```
+
+You may also pass `--config some-file.json` to use a config file at a different location.
+
+See below for the full list of options you may use with a `habitat` credential set in your configuration.
+
+## Using train-habitat from Ruby
+
+The options that may be passed to `Train.create` are listed below.
 
 ### Dual-mode transport
 
@@ -24,17 +64,23 @@ When creating a train-habitat Connection, there are thus two sets of options, pr
 
 ### API-Mode options
 
+API-mode options are used to connect to a Habitat Supervisor running with an exposed HTTP Gateway. They are prefixed with `api_`.
+
+```ruby
+Train.create(:habitat, api_url: 'http://my-hab.my-company.io:9631')
+```
+
 #### api_url
 
-An HTTP or HTTPS URL which identifies a Supervisor HTTP Gateway.  If the port is omitted from the URL, the API standard port of 9631 is assumed; to use port 80, specify it explicitly.
+Required for API-mode use. An HTTP or HTTPS URL which identifies a Supervisor HTTP Gateway.  If the port is omitted from the URL, the API standard port of 9631 is assumed; to use port 80, specify it explicitly.
 
 #### api_auth_token
 
-The supervisor may be configured to require [Bearer Token Authorization](https://www.habitat.sh/docs/using-habitat/#monitor-services-through-the-http-api), in which the client and the gateway use a pre-shared secret. Specify the secret here to use this feature.
+The supervisor may be configured to require a [Bearer Token Authorization](https://www.habitat.sh/docs/using-habitat/#monitor-services-through-the-http-api), in which the client and the gateway use a pre-shared secret. Use this option to specify the secret.
 
 ### CLI Mode options
 
-CLI options are moore varied, and are entirely dependent on the underlying transport chosen to reach the CLI. For example, if there were a supported transport named 'radio' which took options 'channel' and 'band', specify them to train-habitat like this:
+CLI options are more varied, and are entirely dependent on the underlying transport chosen to reach the CLI. For example, if there were a supported transport named 'radio' which took options 'channel' and 'band', specify them to train-habitat like this:
 
 ```ruby
 Train.create(:habitat, {cli_radio_band: 'VHF', cli_radio_channel: 23})
@@ -54,7 +100,7 @@ Plans for future support include (in approximate order):
 
 #### General Options
 
-Any options not prefixed with `cli_` or `api_` are also passed to the CLI transport. This means you can use generic Train connection options such as the `sudo` and `shell` sets of options (see [train source code](https://github.com/inspec/train/blob/71679307903fc8853e09abd93f3901c83800e019/lib/train/extras/command_wrapper.rb#L31).)
+Any options not prefixed with `cli_` or `api_` are also passed to the CLI transport. This means you can use generic Train connection options such as the `sudo` and `shell` sets of options (see [train source code](https://github.com/inspec/train/blob/71679307903fc8853e09abd93f3901c83800e019/lib/train/extras/command_wrapper.rb#L31).), as well as `logger`.
 
 #### SSH Options
 
