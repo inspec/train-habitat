@@ -1,5 +1,5 @@
 require 'uri'
-require 'httpclient'
+require 'net/http'
 
 module TrainPlugins
   module Habitat
@@ -21,16 +21,18 @@ module TrainPlugins
       def get_path(path)
         uri = base_uri.dup
         uri.path = path
-
-        resp = Response.new
-        client = HTTPClient.new
         headers = {}
         unless auth_token.nil?
           headers['Authorization'] = 'Bearer ' + auth_token # Set bearer token, see https://www.habitat.sh/docs/using-habitat/#authentication
         end
 
-        resp.raw_response = client.get(uri, {}, headers)
-        resp.code = resp.raw_response.status
+        conn = Net::HTTP.start(uri.host, uri.port)
+        conn.read_timeout = 5
+
+        resp = Response.new
+        resp.raw_response = conn.get(uri, headers)
+
+        resp.code = resp.raw_response.code.to_i
         if resp.code == 200
           resp.body = JSON.parse(resp.raw_response.body, symbolize_names: true)
         end

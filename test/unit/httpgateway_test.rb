@@ -28,14 +28,20 @@ describe TrainPlugins::Habitat::HTTPGateway do # rubocop:disable Metrics/BlockLe
     let(:opts) { { url: 'http://habitat01.inspec.io:9631' } }
     let(:service_response_mock) do
       service_mock = mock
-      service_mock.expects(:status).returns(200)
+      service_mock.expects(:code).returns(200)
       service_mock.expects(:body).returns(File.read('test/unit/data/single_response.json')).at_least_once
       service_mock
     end
 
-    it 'should be able to get paths' do
-      HTTPClient.any_instance.stubs(:get).returns(service_response_mock)
+    let(:net_http_mock) do
+      http_mock = mock
+      http_mock.expects(:read_timeout=)
+      Net::HTTP.stubs(:start).returns(http_mock)
+      http_mock.expects(:get).returns(service_response_mock)
+    end
 
+    it 'should be able to get paths' do
+      net_http_mock
       response = hgw.get_path('/service') # No exception thrown
       response.wont_be_nil
       response.must_be_kind_of TrainPlugins::Habitat::HTTPGateway::Response
@@ -43,7 +49,7 @@ describe TrainPlugins::Habitat::HTTPGateway do # rubocop:disable Metrics/BlockLe
     end
 
     it 'should automatically unpack JSON responses' do
-      HTTPClient.any_instance.stubs(:get).returns(service_response_mock)
+      net_http_mock
 
       response = hgw.get_path('/service') # No exception thrown
       response.body.must_be_kind_of Array # Apparently they always send us an array
@@ -59,9 +65,7 @@ describe TrainPlugins::Habitat::HTTPGateway do # rubocop:disable Metrics/BlockLe
         }
       end
       it 'should send it as an HTTP header' do
-        HTTPClient.any_instance.expects(:get) \
-                  .returns(service_response_mock) \
-                  .with { |_url, _query, headers| headers == { 'Authorization' => 'Bearer some-secret' } }
+        net_http_mock.with { |_url, headers| headers == { 'Authorization' => 'Bearer some-secret' } }
 
         response = hgw.get_path('/service') # No exception thrown
         response.wont_be_nil
