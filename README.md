@@ -14,7 +14,7 @@ $ inspec plugin install train-habitat
 
 ## Using train-habitat from InSpec
 
-As train-habitat takes potentially many options, it is simplest to list the options in your `~/.inspec/config.json` file, then used the named set of options with `-t`.
+As `train-habitat` takes potentially many options, it is simplest to list the options in your `~/.inspec/config.json` file, then used the named set of options with `-t`.
 
 For example, if your config file contains:
 
@@ -46,7 +46,7 @@ $ inspec exec some-profile -t habitat://prod-hab
 
 You may also pass `--config some-file.json` to use a config file at a different location.
 
-See below for the full list of options you may use with a `habitat` credential set in your configuration.
+See the next section for the full list of options you may use with a `habitat` credential set in your configuration.
 
 ## Using train-habitat from Ruby
 
@@ -54,13 +54,13 @@ The options that may be passed to `Train.create` are listed below.
 
 ### Dual-mode transport
 
-Because habitat exposes some facts by its HTTP Gateway API, and some facts by its CLI tool `hab`, this Train Transport has three modes of operation:
+Because Habitat exposes some facts by its HTTP Gateway API, and some facts by its CLI tool `hab`, this Train Transport has three modes of operation:
 
  * Using only the HTTP API (no ability to query packages, but rich ability to query rings)
  * Using only the `hab` CLI command (limitations TBD)
  * Using both (full capabilities)
 
-When creating a train-habitat Connection, there are thus two sets of options, prefixed with `api_` and `cli_` respectively. You must provide at least one set.
+When creating a `train-habitat` Connection, there are thus two sets of options, prefixed with `api_` and `cli_` respectively. You must provide at least one set.
 
 ### API-Mode options
 
@@ -72,7 +72,7 @@ Train.create(:habitat, api_url: 'http://my-hab.my-company.io:9631')
 
 #### api_url
 
-Required for API-mode use. An HTTP or HTTPS URL which identifies a Supervisor HTTP Gateway.  If the port is omitted from the URL, the API standard port of 9631 is assumed; to use port 80, specify it explicitly.
+Required for API-mode use. This is an HTTP or HTTPS URL that identifies a Supervisor HTTP Gateway.  If the port is omitted from the URL, the API standard port of 9631 is assumed; to use port 80, specify it explicitly.
 
 #### api_auth_token
 
@@ -80,7 +80,7 @@ The supervisor may be configured to require a [Bearer Token Authorization](https
 
 ### CLI Mode options
 
-CLI options are more varied, and are entirely dependent on the underlying transport chosen to reach the CLI. For example, if there were a supported transport named 'radio' which took options 'channel' and 'band', specify them to train-habitat like this:
+CLI options are more varied, and are entirely dependent on the underlying transport chosen to reach the CLI. For example, if there were a supported transport named 'radio' that took options 'channel' and 'band', specify them to train-habitat like this:
 
 ```ruby
 Train.create(:habitat, {cli_radio_band: 'VHF', cli_radio_channel: 23})
@@ -100,11 +100,11 @@ Plans for future support include (in approximate order):
 
 #### General Options
 
-Any options not prefixed with `cli_` or `api_` are also passed to the CLI transport. This means you can use generic Train connection options such as the `sudo` and `shell` sets of options (see [train source code](https://github.com/inspec/train/blob/71679307903fc8853e09abd93f3901c83800e019/lib/train/extras/command_wrapper.rb#L31).), as well as `logger`.
+Any options not prefixed with `cli_` or `api_` are also passed to the CLI transport. This means you can use generic Train connection options such as the `sudo` and `shell` sets of options (see [train source code](https://github.com/inspec/train/blob/71679307903fc8853e09abd93f3901c83800e019/lib/train/extras/command_wrapper.rb#L31)), as well as `logger`.
 
 #### SSH Options
 
-`train-habitat` can accept any option that the Train SSH Transport accepts, if the prefix `cli_ssh_` is added. This includes:
+`train-habitat` can accept any option that the Train SSH Transport accepts if the prefix `cli_ssh_` is added. This includes:
 
  * `cli_ssh_host` - String hostname or IP address
  * `cli_ssh_user` - String user to connect as
