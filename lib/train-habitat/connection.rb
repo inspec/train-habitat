@@ -44,6 +44,12 @@ module TrainPlugins
         cli_connection.run_command(hab_path + ' ' + command)
       end
 
+      # See #run_command in BaseConnection.
+      def run_command_via_connection(*args)
+        raise CliNotAvailableError(cli_tranport_names) unless cli_options_provided?
+        cli_connection.run_command(*args)
+      end
+
       def hab_path
         '/bin/hab'
       end
