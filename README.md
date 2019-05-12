@@ -1,5 +1,11 @@
 # Train-Habitat
 
+* **Project State: Active**
+* **Issues Response SLA: 3 business days**
+* **Pull Request Response SLA: 3 business days**
+
+For more information on project states and SLAs, see [this documentation](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md).
+
 `train-habitat` is a Train plugin and is used as a Train Transport to connect to Habitat installations.
 
 ## To Install this as a User
