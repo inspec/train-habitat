@@ -40,6 +40,8 @@ systemctl start habitat
 systemctl enable habitat
 fi
 
+hab license accept
+
 # Install a package
 pkg_origin=core
 pkg_name=httpd
