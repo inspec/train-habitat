@@ -47,6 +47,7 @@ module TrainPlugins
       # See #run_command in BaseConnection.
       def run_command_via_connection(*args)
         raise CliNotAvailableError(cli_tranport_names) unless cli_options_provided?
+
         cli_connection.run_command(*args)
       end
 
