@@ -17,23 +17,34 @@ describe 'Using the SSH CLI transport' do
   end
   let(:hab_conn) { Train.create(:habitat, transport_opts).connection }
 
-  describe 'when using defaults' do
-    it 'should be able to get the hab version' do
-      result = hab_conn.run_hab_cli('--version')
-      result.exit_status.must_equal 0
-      # "hab 0.77.0/20190301212334\n"
-      result.stdout.must_match %r{^hab\s+\d+\.\d+\.\d+/\d+\n}
+  describe 'run_hab_cli' do
+    describe 'when using defaults' do
+      it 'should be able to get the hab version' do
+        result = hab_conn.run_hab_cli('--version')
+        result.exit_status.must_equal 0
+        # "hab 0.77.0/20190301212334\n"
+        result.stdout.must_match %r{^hab\s+\d+\.\d+\.\d+/\d+\n}
+      end
+    end
+
+    describe 'when using a setup that requires sudo' do
+      it 'should be able to get the hab version' do
+        result = hab_conn.run_hab_cli('svc status')
+        result.stderr.must_equal ''
+        result.exit_status.must_equal 0
+        # package                           type        desired  state  elapsed (s)  pid   group\n
+        # core/httpd/2.4.35/20190307151146  standalone  up       up     28521        1407  httpd.default\n
+        result.stdout.must_match(/^package\s+type\s+/)
+      end
     end
   end
 
-  describe 'when using a setup that requires sudo' do
-    it 'should be able to get the hab version' do
-      result = hab_conn.run_hab_cli('svc status')
+  describe 'run_command' do
+    it 'should be able to echo back' do
+      result = hab_conn.run_command('echo testresult')
       result.stderr.must_equal ''
       result.exit_status.must_equal 0
-      # package                           type        desired  state  elapsed (s)  pid   group\n
-      # core/httpd/2.4.35/20190307151146  standalone  up       up     28521        1407  httpd.default\n
-      result.stdout.must_match(/^package\s+type\s+/)
+      result.stdout.must_equal "testresult\n"
     end
   end
 end
