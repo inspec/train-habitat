@@ -23,7 +23,6 @@ describe TrainPlugins::Habitat::Connection do
 
     %i(
       file_via_connection
-      run_command_via_connection
     ).each do |method_name|
       it "should NOT provide a #{method_name}() method" do
         # false passed to instance_methods says 'don't use inheritance'
@@ -111,13 +110,26 @@ describe TrainPlugins::Habitat::Connection do
   # =========================================================================== #
   #                         Running Hab CLI commands
   # =========================================================================== #
-  # TODO
-  # describe 'when cli non-transport options are passed' do
-  #   it 'should recognize them' do
-  #      # such as hab path
-  #      # such as env vars
-  #   end
-  # end
+
+  describe '#run_hab_cli' do
+    it 'should call the CLI connection while prefixing with the hab path' do
+      cli_cxn = mock
+      cli_cxn.expects(:run_command).with('/bin/hab testcmd')
+      conn.expects(:cli_options_provided?).returns(true)
+      conn.expects(:cli_connection).returns(cli_cxn)
+      conn.run_hab_cli('testcmd')
+    end
+  end
+
+  describe '#run_command' do
+    it 'should call the CLI connection with the string provided' do
+      cli_cxn = mock
+      cli_cxn.expects(:run_command).with('testcmd')
+      conn.expects(:cli_options_provided?).returns(true)
+      conn.expects(:cli_connection).returns(cli_cxn)
+      conn.run_command('testcmd')
+    end
+  end
 
   # =========================================================================== #
   #                                API Client
