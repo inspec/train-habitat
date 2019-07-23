@@ -10,13 +10,7 @@ For more information on project states and SLAs, see [this documentation](https:
 
 ## To Install this as a User
 
-You will need InSpec v2.3 or later.
-
-Simply run:
-
-```
-$ inspec plugin install train-habitat
-```
+`train-habitat` is included with InSpec 4.7.3 and later. There is no need to separately install this plugin.
 
 ## Using train-habitat from InSpec
 
