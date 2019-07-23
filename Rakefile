@@ -64,4 +64,6 @@ namespace(:test) do
   end
 end
 
+task test: 'test:unit'
+
 task default: %i(test:unit lint)
