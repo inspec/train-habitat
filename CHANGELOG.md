@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.0 -->
+<!-- latest_release 0.2.1 -->
+## [v0.2.1](https://github.com/inspec/train-habitat/tree/v0.2.1) (2019-07-23)
+
+#### Bug Fixes
+- Remove bad advice about installing plugin [#26](https://github.com/inspec/train-habitat/pull/26) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
 ## [v0.2.0](https://github.com/inspec/train-habitat/tree/v0.2.0) (2019-07-23)
 
 #### New Features
 - Add Connection#run_command [#22](https://github.com/inspec/train-habitat/pull/22) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v0.1.2](https://github.com/inspec/train-habitat/tree/v0.1.2) (2019-07-23)
 
