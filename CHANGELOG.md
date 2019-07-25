@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.2 -->
+<!-- latest_release 0.2.3 -->
+## [v0.2.3](https://github.com/inspec/train-habitat/tree/v0.2.3) (2019-07-25)
+
+#### Merged Pull Requests
+- Update travis settings for ruby / dist [#23](https://github.com/inspec/train-habitat/pull/23) ([miah](https://github.com/miah))
+<!-- latest_release -->
+
 ## [v0.2.2](https://github.com/inspec/train-habitat/tree/v0.2.2) (2019-07-23)
 
 #### Merged Pull Requests
 - Get green [#27](https://github.com/inspec/train-habitat/pull/27) ([zenspider](https://github.com/zenspider))
-<!-- latest_release -->
 
 ## [v0.2.1](https://github.com/inspec/train-habitat/tree/v0.2.1) (2019-07-23)
 
