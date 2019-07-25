@@ -9,6 +9,15 @@ pipelines:
 slack:
  notify_channel: inspec-notify
 
+# When we promote, which gems will we promote as part of the built_in:publish_rubygems action?
+rubygems:
+  - train-habitat
+
+promote:
+  actions:
+    - built_in:rollover_changelog
+    - built_in:publish_rubygems
+
 github:
  delete_branch_on_merge: true
  minor_bump_labels:
