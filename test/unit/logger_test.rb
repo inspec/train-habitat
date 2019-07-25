@@ -26,7 +26,7 @@ describe "logger facilities" do
     end
 
     describe "when instantiating a connection" do
-      let(:opts) { { cli_ssh_host: "127.0.0.1" } }
+      let(:opts) { { cli_ssh_host: "127.0.0.1", cli_ssh_password: "secret" } }
 
       it "should create a logger for you" do
         # Intercept platform detection
