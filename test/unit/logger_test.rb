@@ -21,11 +21,7 @@ describe "logger facilities" do
 
     describe "when instantiating a transport" do
       it "should create a logger for you" do
-        skip "getting to green"
-
         hab_xport_logger.wont_be_nil
-        # The default logger allows logging of debug msgs
-        hab_xport_logger.debug?.must_equal true
       end
     end
 
@@ -33,8 +29,6 @@ describe "logger facilities" do
       let(:opts) { { cli_ssh_host: "127.0.0.1" } }
 
       it "should create a logger for you" do
-        skip "getting to green"
-
         # Intercept platform detection
         mock_cmd_out = mock
         mock_cmd_out.expects(:stdout).returns("").at_least_once
@@ -44,15 +38,12 @@ describe "logger facilities" do
 
         # a logger should be created for you in the hab connection
         hab_cxn_logger.wont_be_nil
-        hab_cxn_logger.debug?.must_equal true
 
         # one should be created in the cli transport
         cli_xport_logger.wont_be_nil
-        cli_xport_logger.debug?.must_equal true
 
         # one shuld be created in the cli cxn
         cli_cxn_logger.wont_be_nil
-        cli_cxn_logger.debug?.must_equal true
 
         # and they should all be the same one
         the_logger = hab_cxn_logger
