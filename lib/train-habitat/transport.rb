@@ -1,11 +1,11 @@
-require 'train'
-require 'train/plugins'
-require 'train-habitat/connection'
+require "train"
+require "train/plugins"
+require "train-habitat/connection"
 
 module TrainPlugins
   module Habitat
     class Transport < Train.plugin(1)
-      name 'habitat'
+      name "habitat"
 
       # The train-habitat plugins is a chimeric plugin, meaning it uses
       # multiple ways of connecting to its target. A user must specifiy
@@ -14,8 +14,8 @@ module TrainPlugins
 
       # For service listings and health, specify supervisor api options.
       # https://www.habitat.sh/docs/using-habitat/#monitor-services-through-the-http-api
-      option :api_url, required: false, desc: 'The url at which a Habitat Supervisor exposes its HTTP Gateway API'
-      option :api_auth_token, required: false, desc: 'A bearer token which may be used to authenticate to the Supervisor HTTP Gateway'
+      option :api_url, required: false, desc: "The url at which a Habitat Supervisor exposes its HTTP Gateway API"
+      option :api_auth_token, required: false, desc: "A bearer token which may be used to authenticate to the Supervisor HTTP Gateway"
 
       def self.cli_transport_prefixes
         {

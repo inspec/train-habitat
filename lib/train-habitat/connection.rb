@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'net/http'
-require 'json'
-require 'train-habitat/httpgateway'
-require 'train-habitat/platform'
-require 'train-habitat/transport'
+require "net/http"
+require "json"
+require "train-habitat/httpgateway"
+require "train-habitat/platform"
+require "train-habitat/transport"
 
 module TrainPlugins
   module Habitat
@@ -27,7 +27,7 @@ module TrainPlugins
       end
 
       def api_options_provided?
-        have_transport_options_with_prefix?('api')
+        have_transport_options_with_prefix?("api")
       end
 
       def cli_options_provided?
@@ -41,7 +41,7 @@ module TrainPlugins
         raise CliNotAvailableError(cli_tranport_names) unless cli_options_provided?
 
         # TODO: - leverage exec_options to add things like JSON parsing, ENV setting, etc.
-        cli_connection.run_command(hab_path + ' ' + command)
+        cli_connection.run_command(hab_path + " " + command)
       end
 
       # See #run_command in BaseConnection.
@@ -52,7 +52,7 @@ module TrainPlugins
       end
 
       def hab_path
-        '/bin/hab'
+        "/bin/hab"
       end
 
       def habitat_api_client
@@ -60,9 +60,9 @@ module TrainPlugins
           # Send all options beginning with api_ to the HTTPGateway, stripping the prefix
           api_options = {}
           transport_options.each do |option_name, option_value|
-            next unless option_name.to_s.start_with? 'api_'
+            next unless option_name.to_s.start_with? "api_"
 
-            api_options[option_name.to_s.sub(/^api_/, '').to_sym] = option_value
+            api_options[option_name.to_s.sub(/^api_/, "").to_sym] = option_value
           end
           HTTPGateway.new(api_options)
         end
@@ -76,14 +76,14 @@ module TrainPlugins
         end
 
         valid_cli_prefixes = TrainPlugins::Habitat::Transport.cli_transport_prefixes.keys.map(&:to_s)
-        seen_cli_options = transport_options.keys.map(&:to_s).select { |n| n.start_with?('cli_') }
+        seen_cli_options = transport_options.keys.map(&:to_s).select { |n| n.start_with?("cli_") }
 
         # All seen CLI options must start with a recognized prefix
         options_by_prefix = {}
         seen_cli_options.each do |option|
           prefix = valid_cli_prefixes.detect { |p| option.start_with?(p) }
           unless prefix
-            raise Train::TransportError, "All Habitat CLI connection options must begin with a recognized prefix (#{valid_cli_prefixes.join(', ')}) - saw #{option}"
+            raise Train::TransportError, "All Habitat CLI connection options must begin with a recognized prefix (#{valid_cli_prefixes.join(", ")}) - saw #{option}"
           end
 
           options_by_prefix[prefix] ||= []
@@ -92,7 +92,7 @@ module TrainPlugins
 
         # Only one prefix may be used (don't mix and match)
         if options_by_prefix.count > 1
-          raise Train::TransportError, "Only one set of Habitat CLI connection options may be used - saw #{options_by_prefix.keys.join(', ')}"
+          raise Train::TransportError, "Only one set of Habitat CLI connection options may be used - saw #{options_by_prefix.keys.join(", ")}"
         end
       end
 
@@ -117,7 +117,7 @@ module TrainPlugins
         seen_cli_transports = {}
         non_specific_options = {} # Things like :logger, :sudo, etc
         transport_options.each do |xport_option_name, xport_option_value|
-          unless xport_option_name.to_s.start_with?('cli_')
+          unless xport_option_name.to_s.start_with?("cli_")
             non_specific_options[xport_option_name] = xport_option_value
             next
           end
@@ -128,7 +128,7 @@ module TrainPlugins
 
             seen_cli_transports[xport_name] ||= {}
             # Remove the prefix from the option and store under transport name
-            seen_cli_transports[xport_name][xport_option_name.to_s.sub(/^#{prefix}_/, '').to_sym] = xport_option_value
+            seen_cli_transports[xport_name][xport_option_name.to_s.sub(/^#{prefix}_/, "").to_sym] = xport_option_value
           end
         end
 

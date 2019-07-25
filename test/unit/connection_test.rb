@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require './test/helper'
-require './lib/train-habitat/connection'
+require "./test/helper"
+require "./lib/train-habitat/connection"
 
 # rubocop:disable Metrics/BlockLength
 describe TrainPlugins::Habitat::Connection do
   subject { TrainPlugins::Habitat::Connection }
 
-  let(:opt)   { { api_host: 'habitat01.inspec.io' } }
+  let(:opt)   { { api_host: "habitat01.inspec.io" } }
   let(:conn)  { subject.new(opt) }
   let(:cache) { conn.instance_variable_get(:@cache) }
 
@@ -15,8 +15,8 @@ describe TrainPlugins::Habitat::Connection do
   #                         Constructor and Basics
   # =========================================================================== #
 
-  describe 'connection definition' do
-    it 'should inherit from the Train Connection base' do
+  describe "connection definition" do
+    it "should inherit from the Train Connection base" do
       # For Class, '<' means 'is a descendant of'
       (subject < Train::Plugins::Transport::BaseConnection).must_equal(true)
     end
@@ -31,8 +31,8 @@ describe TrainPlugins::Habitat::Connection do
     end
   end
 
-  describe '#new' do
-    it 'should raise Train::Transport error with empty options' do
+  describe "#new" do
+    it "should raise Train::Transport error with empty options" do
       proc do
         TrainPlugins::Habitat::Connection.new({})
       end.must_raise Train::TransportError
@@ -42,19 +42,19 @@ describe TrainPlugins::Habitat::Connection do
   # =========================================================================== #
   #                                 API Options
   # =========================================================================== #
-  describe '#api_options_provided?' do
-    describe 'when api options are absent' do
-      let(:opt) { { cli_test_host: 'somewhere.com' } }
-      it 'should not find the options' do
+  describe "#api_options_provided?" do
+    describe "when api options are absent" do
+      let(:opt) { { cli_test_host: "somewhere.com" } }
+      it "should not find the options" do
         TrainPlugins::Habitat::Transport.expects(:cli_transport_prefixes).returns({ cli_test: :test }).at_least_once
         TrainPlugins::Habitat::Connection.any_instance.stubs(:initialize_cli_connection!)
         conn.api_options_provided?.must_equal false
       end
     end
 
-    describe 'when api options are present' do
-      let(:opt) { { api_url: 'http://somewhere.com:9631' } }
-      it 'should find the options' do
+    describe "when api options are present" do
+      let(:opt) { { api_url: "http://somewhere.com:9631" } }
+      it "should find the options" do
         conn.api_options_provided?.must_equal true
       end
     end
@@ -63,19 +63,19 @@ describe TrainPlugins::Habitat::Connection do
   # =========================================================================== #
   #                              CLI Options
   # =========================================================================== #
-  describe '#cli_options_provided?' do
-    describe 'when cli options are present' do
-      let(:opt) { { cli_test_host: 'somewhere.com' } }
-      it 'should find the options' do
+  describe "#cli_options_provided?" do
+    describe "when cli options are present" do
+      let(:opt) { { cli_test_host: "somewhere.com" } }
+      it "should find the options" do
         TrainPlugins::Habitat::Transport.expects(:cli_transport_prefixes).returns({ cli_test: :test }).at_least_once
         TrainPlugins::Habitat::Connection.any_instance.stubs(:initialize_cli_connection!)
         conn.cli_options_provided?.must_equal true
       end
     end
 
-    describe 'when cli options are absent' do
-      let(:opt) { { api_host: 'somewhere.com' } }
-      it 'should not find the options' do
+    describe "when cli options are absent" do
+      let(:opt) { { api_host: "somewhere.com" } }
+      it "should not find the options" do
         TrainPlugins::Habitat::Transport.expects(:cli_transport_prefixes).returns({ cli_test: :test }).at_least_once
         TrainPlugins::Habitat::Connection.any_instance.stubs(:initialize_cli_connection!)
         conn.cli_options_provided?.must_equal false
@@ -83,25 +83,25 @@ describe TrainPlugins::Habitat::Connection do
     end
   end
 
-  describe 'when neither cli nor api options are present' do
-    let(:opt) { { host: 'somewhere.com' } }
-    it 'should not find the options' do
+  describe "when neither cli nor api options are present" do
+    let(:opt) { { host: "somewhere.com" } }
+    it "should not find the options" do
       assert_raises(Train::TransportError) { conn }
     end
   end
 
-  describe 'when CLI options for multiple transports are passed' do
-    let(:opt) { { cli_test1_host: 'somewhere.com', cli_test2_host: 'elsewhere.com' } }
-    it 'should reject them' do
+  describe "when CLI options for multiple transports are passed" do
+    let(:opt) { { cli_test1_host: "somewhere.com", cli_test2_host: "elsewhere.com" } }
+    it "should reject them" do
       TrainPlugins::Habitat::Transport.expects(:cli_transport_prefixes) \
-                                      .returns({ cli_test1: :test1, cli_test2: :test2 }).at_least_once
+        .returns({ cli_test1: :test1, cli_test2: :test2 }).at_least_once
       assert_raises(Train::TransportError) { conn }
     end
   end
 
-  describe 'when unrecognized CLI options are passed' do
-    let(:opt) { { cli_test3_host: 'somewhere.com' } }
-    it 'should reject them' do
+  describe "when unrecognized CLI options are passed" do
+    let(:opt) { { cli_test3_host: "somewhere.com" } }
+    it "should reject them" do
       TrainPlugins::Habitat::Transport.expects(:cli_transport_prefixes).returns({ cli_test1: :test1 }).at_least_once
       assert_raises(Train::TransportError) { conn }
     end
@@ -111,23 +111,23 @@ describe TrainPlugins::Habitat::Connection do
   #                         Running Hab CLI commands
   # =========================================================================== #
 
-  describe '#run_hab_cli' do
-    it 'should call the CLI connection while prefixing with the hab path' do
+  describe "#run_hab_cli" do
+    it "should call the CLI connection while prefixing with the hab path" do
       cli_cxn = mock
-      cli_cxn.expects(:run_command).with('/bin/hab testcmd')
+      cli_cxn.expects(:run_command).with("/bin/hab testcmd")
       conn.expects(:cli_options_provided?).returns(true)
       conn.expects(:cli_connection).returns(cli_cxn)
-      conn.run_hab_cli('testcmd')
+      conn.run_hab_cli("testcmd")
     end
   end
 
-  describe '#run_command' do
-    it 'should call the CLI connection with the string provided' do
+  describe "#run_command" do
+    it "should call the CLI connection with the string provided" do
       cli_cxn = mock
-      cli_cxn.expects(:run_command).with('testcmd')
+      cli_cxn.expects(:run_command).with("testcmd")
       conn.expects(:cli_options_provided?).returns(true)
       conn.expects(:cli_connection).returns(cli_cxn)
-      conn.run_command('testcmd')
+      conn.run_command("testcmd")
     end
   end
 
@@ -135,19 +135,19 @@ describe TrainPlugins::Habitat::Connection do
   #                                API Client
   # =========================================================================== #
 
-  describe '#habitat_api_client' do
-    let(:opt) { { api_url: 'http://somewhere.com:9631' } }
+  describe "#habitat_api_client" do
+    let(:opt) { { api_url: "http://somewhere.com:9631" } }
 
-    it 'should return kind of TrainPlugins::Habitat::HTTPGateway' do
+    it "should return kind of TrainPlugins::Habitat::HTTPGateway" do
       conn.habitat_api_client.must_be_kind_of TrainPlugins::Habitat::HTTPGateway
     end
 
-    it 'should create a HTTPGateway with the right base URL' do
+    it "should create a HTTPGateway with the right base URL" do
       conn.habitat_api_client.wont_be_nil
       conn.habitat_api_client.base_uri.to_s.must_equal opt[:api_url]
     end
 
-    it 'returns a new instance when cache is disabled' do
+    it "returns a new instance when cache is disabled" do
       conn.disable_cache(:api_call)
       client_one = conn.habitat_api_client
       client_two = conn.habitat_api_client
@@ -156,7 +156,7 @@ describe TrainPlugins::Habitat::Connection do
       client_one.object_id.wont_equal client_two.object_id
     end
 
-    it 'returns the same instance when cache is enabled' do
+    it "returns the same instance when cache is enabled" do
       cache[:api_call].count.must_equal 0
       conn.enable_cache(:api_call)
 
