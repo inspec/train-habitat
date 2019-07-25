@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.4 -->
+<!-- latest_release 0.2.5 -->
+## [v0.2.5](https://github.com/inspec/train-habitat/tree/v0.2.5) (2019-07-25)
+
+#### Merged Pull Requests
+- Adjust quotes in version file [#31](https://github.com/inspec/train-habitat/pull/31) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
 ## [v0.2.4](https://github.com/inspec/train-habitat/tree/v0.2.4) (2019-07-25)
 
 #### Merged Pull Requests
 - Add Expeditor promote action to publish rubygem [#29](https://github.com/inspec/train-habitat/pull/29) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v0.2.3](https://github.com/inspec/train-habitat/tree/v0.2.3) (2019-07-25)
 
