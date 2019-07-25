@@ -1,5 +1,5 @@
-require 'uri'
-require 'net/http'
+require "uri"
+require "net/http"
 
 module TrainPlugins
   module Habitat
@@ -23,7 +23,7 @@ module TrainPlugins
         uri.path = path
         headers = {}
         unless auth_token.nil?
-          headers['Authorization'] = 'Bearer ' + auth_token # Set bearer token, see https://www.habitat.sh/docs/using-habitat/#authentication
+          headers["Authorization"] = "Bearer " + auth_token # Set bearer token, see https://www.habitat.sh/docs/using-habitat/#authentication
         end
 
         conn = Net::HTTP.start(uri.host, uri.port)

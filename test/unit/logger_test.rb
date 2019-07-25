@@ -1,12 +1,12 @@
 # Verify that loggers get passed around correctly.  This is
 # important, because the CLI transports can be very chatty.
 
-require './test/helper'
-require './lib/train-habitat/connection'
-require './lib/train-habitat/transport'
-require 'train/transports/ssh'
+require "./test/helper"
+require "./lib/train-habitat/connection"
+require "./lib/train-habitat/transport"
+require "train/transports/ssh"
 
-describe 'logger facilities' do
+describe "logger facilities" do
   let(:hab_xport) { Train.create(:habitat, opts) }
   let(:hab_xport_logger) { hab_xport.instance_variable_get(:@logger) }
   let(:hab_cxn) { hab_xport.connection }
@@ -16,12 +16,12 @@ describe 'logger facilities' do
   let(:cli_cxn) { hab_cxn.cli_connection }
   let(:cli_cxn_logger) { cli_cxn.instance_variable_get(:@logger) }
 
-  describe 'when not providing a logger' do
+  describe "when not providing a logger" do
     let(:opts) { {} }
 
-    describe 'when instantiating a transport' do
-      it 'should create a logger for you' do
-        skip 'getting to green'
+    describe "when instantiating a transport" do
+      it "should create a logger for you" do
+        skip "getting to green"
 
         hab_xport_logger.wont_be_nil
         # The default logger allows logging of debug msgs
@@ -29,15 +29,15 @@ describe 'logger facilities' do
       end
     end
 
-    describe 'when instantiating a connection' do
-      let(:opts) { { cli_ssh_host: '127.0.0.1' } }
+    describe "when instantiating a connection" do
+      let(:opts) { { cli_ssh_host: "127.0.0.1" } }
 
-      it 'should create a logger for you' do
-        skip 'getting to green'
+      it "should create a logger for you" do
+        skip "getting to green"
 
         # Intercept platform detection
         mock_cmd_out = mock
-        mock_cmd_out.expects(:stdout).returns('').at_least_once
+        mock_cmd_out.expects(:stdout).returns("").at_least_once
         mock_cmd_out.expects(:exit_status).returns(0).at_least_once
         Train::Transports::SSH::Connection.any_instance.stubs(:run_command_via_connection).returns(mock_cmd_out)
         Train::Extras::CommandWrapper.stubs(:load)
