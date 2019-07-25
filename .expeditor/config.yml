@@ -15,7 +15,9 @@ rubygems:
 
 promote:
   actions:
+    - built_in:rollover_changelog
     - built_in:publish_rubygems
+    - built_in:create_github_release
 
 github:
  delete_branch_on_merge: true
@@ -26,6 +28,7 @@ github:
   - master
 
 changelog:
+ rollup_header: Changes not yet released to rubygems.org
  categories:
   - "Type/New Feature": "New Features"
   - "Type/Enhancement": "Enhancements"
@@ -42,4 +45,6 @@ merge_actions:
     ignore_labels:
      - "Expeditor/Skip Changelog"
      - "Expeditor/Skip All"
+ - built_in:build_gem:
+     only_if: built_in:bump_version
 

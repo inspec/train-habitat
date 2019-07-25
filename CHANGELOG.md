@@ -5,6 +5,12 @@
 - chefstyle -a [#32](https://github.com/inspec/train-habitat/pull/32) ([miah](https://github.com/miah))
 <!-- latest_release -->
 
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
+<!-- latest_stable_release -->
+
 ## [v0.2.5](https://github.com/inspec/train-habitat/tree/v0.2.5) (2019-07-25)
 
 #### Merged Pull Requests
