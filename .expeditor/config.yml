@@ -15,7 +15,6 @@ rubygems:
 
 promote:
   actions:
-    - built_in:rollover_changelog
     - built_in:publish_rubygems
 
 github:
