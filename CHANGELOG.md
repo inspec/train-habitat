@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.3 -->
+<!-- latest_release 0.2.4 -->
+## [v0.2.4](https://github.com/inspec/train-habitat/tree/v0.2.4) (2019-07-25)
+
+#### Merged Pull Requests
+- Add Expeditor promote action to publish rubygem [#29](https://github.com/inspec/train-habitat/pull/29) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
 ## [v0.2.3](https://github.com/inspec/train-habitat/tree/v0.2.3) (2019-07-25)
 
 #### Merged Pull Requests
 - Update travis settings for ruby / dist [#23](https://github.com/inspec/train-habitat/pull/23) ([miah](https://github.com/miah))
-<!-- latest_release -->
 
 ## [v0.2.2](https://github.com/inspec/train-habitat/tree/v0.2.2) (2019-07-23)
 
