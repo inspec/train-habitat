@@ -1,19 +1,17 @@
-<!-- latest_release 0.2.7 -->
+<!-- latest_release -->
+<!-- latest_release -->
+
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v0.2.7](https://github.com/inspec/train-habitat/tree/v0.2.7) (2019-07-25)
 
 #### Merged Pull Requests
 - Allow expeditor to release gems. [#33](https://github.com/inspec/train-habitat/pull/33) ([miah](https://github.com/miah))
-<!-- latest_release -->
-
-<!-- release_rollup since=0.1.1 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Allow expeditor to release gems. [#33](https://github.com/inspec/train-habitat/pull/33) ([miah](https://github.com/miah)) <!-- 0.2.7 -->
-<!-- release_rollup -->
-
 <!-- latest_stable_release -->
-<!-- latest_stable_release -->
+
+
 
 ## [v0.2.5](https://github.com/inspec/train-habitat/tree/v0.2.5) (2019-07-25)
 
