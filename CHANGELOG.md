@@ -1,12 +1,15 @@
-<!-- latest_release 0.2.8 -->
-## [v0.2.8](https://github.com/inspec/train-habitat/tree/v0.2.8) (2019-07-25)
+<!-- latest_release 0.2.9 -->
+## [v0.2.9](https://github.com/inspec/train-habitat/tree/v0.2.9) (2019-07-26)
 
-#### Merged Pull Requests
-- this isnt supported here actually. [#34](https://github.com/inspec/train-habitat/pull/34) ([miah](https://github.com/miah))
+#### Bug Fixes
+- Un-skip logger unit tests [#28](https://github.com/inspec/train-habitat/pull/28) ([clintoncwolfe](https://github.com/clintoncwolfe))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.2.7 -->
 ### Changes not yet released to rubygems.org
+
+#### Bug Fixes
+- Un-skip logger unit tests [#28](https://github.com/inspec/train-habitat/pull/28) ([clintoncwolfe](https://github.com/clintoncwolfe)) <!-- 0.2.9 -->
 
 #### Merged Pull Requests
 - this isnt supported here actually. [#34](https://github.com/inspec/train-habitat/pull/34) ([miah](https://github.com/miah)) <!-- 0.2.8 -->
