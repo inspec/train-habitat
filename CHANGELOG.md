@@ -1,8 +1,8 @@
-<!-- latest_release 0.2.9 -->
-## [v0.2.9](https://github.com/inspec/train-habitat/tree/v0.2.9) (2019-07-26)
+<!-- latest_release 0.2.10 -->
+## [v0.2.10](https://github.com/inspec/train-habitat/tree/v0.2.10) (2019-07-29)
 
-#### Bug Fixes
-- Un-skip logger unit tests [#28](https://github.com/inspec/train-habitat/pull/28) ([clintoncwolfe](https://github.com/clintoncwolfe))
+#### Merged Pull Requests
+- Remove travis [#35](https://github.com/inspec/train-habitat/pull/35) ([miah](https://github.com/miah))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.2.7 -->
@@ -12,6 +12,7 @@
 - Un-skip logger unit tests [#28](https://github.com/inspec/train-habitat/pull/28) ([clintoncwolfe](https://github.com/clintoncwolfe)) <!-- 0.2.9 -->
 
 #### Merged Pull Requests
+- Remove travis [#35](https://github.com/inspec/train-habitat/pull/35) ([miah](https://github.com/miah)) <!-- 0.2.10 -->
 - this isnt supported here actually. [#34](https://github.com/inspec/train-habitat/pull/34) ([miah](https://github.com/miah)) <!-- 0.2.8 -->
 <!-- release_rollup -->
 
