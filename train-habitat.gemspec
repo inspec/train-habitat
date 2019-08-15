@@ -21,9 +21,6 @@ Gem::Specification.new do |spec|
   ).reject { |f| File.directory?(f) }
   spec.require_paths = ["lib"]
 
-  # All plugins should mention train, > 1.4
-  spec.add_dependency "train", ">= 1.7.5", "< 3.0"
-
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "rake", "~> 10.0"
 end

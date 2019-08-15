@@ -2,6 +2,8 @@
 
 source "https://rubygems.org"
 
+gem "train-core", [">= 1.7.5", "< 4.0"]
+
 gemspec
 
 group :development do
