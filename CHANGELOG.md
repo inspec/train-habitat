@@ -1,28 +1,25 @@
-<!-- latest_release 0.2.11 -->
-## [v0.2.11](https://github.com/inspec/train-habitat/tree/v0.2.11) (2019-08-15)
-
-#### Merged Pull Requests
-- Move train dependencies into Gemfile from gemspec [#36](https://github.com/inspec/train-habitat/pull/36) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=0.2.7 -->
-### Changes not yet released to rubygems.org
-
-#### Bug Fixes
-- Un-skip logger unit tests [#28](https://github.com/inspec/train-habitat/pull/28) ([clintoncwolfe](https://github.com/clintoncwolfe)) <!-- 0.2.9 -->
-
-#### Merged Pull Requests
-- Move train dependencies into Gemfile from gemspec [#36](https://github.com/inspec/train-habitat/pull/36) ([clintoncwolfe](https://github.com/clintoncwolfe)) <!-- 0.2.11 -->
-- Remove travis [#35](https://github.com/inspec/train-habitat/pull/35) ([miah](https://github.com/miah)) <!-- 0.2.10 -->
-- this isnt supported here actually. [#34](https://github.com/inspec/train-habitat/pull/34) ([miah](https://github.com/miah)) <!-- 0.2.8 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v0.2.11](https://github.com/inspec/train-habitat/tree/v0.2.11) (2019-08-15)
+
+#### Bug Fixes
+- Un-skip logger unit tests [#28](https://github.com/inspec/train-habitat/pull/28) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+#### Merged Pull Requests
+- this isnt supported here actually. [#34](https://github.com/inspec/train-habitat/pull/34) ([miah](https://github.com/miah))
+- Remove travis [#35](https://github.com/inspec/train-habitat/pull/35) ([miah](https://github.com/miah))
+- Move train dependencies into Gemfile from gemspec [#36](https://github.com/inspec/train-habitat/pull/36) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_stable_release -->
+
 ## [v0.2.7](https://github.com/inspec/train-habitat/tree/v0.2.7) (2019-07-25)
 
 #### Merged Pull Requests
 - Allow expeditor to release gems. [#33](https://github.com/inspec/train-habitat/pull/33) ([miah](https://github.com/miah))
-<!-- latest_stable_release -->
 
 
 
