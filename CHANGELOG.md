@@ -1,7 +1,15 @@
-<!-- latest_release -->
+<!-- latest_release 0.2.12 -->
+## [v0.2.12](https://github.com/inspec/train-habitat/tree/v0.2.12) (2019-10-31)
+
+#### Merged Pull Requests
+- Don&#39;t ship the readme in the gem artifact [#37](https://github.com/inspec/train-habitat/pull/37) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=0.2.11 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Don&#39;t ship the readme in the gem artifact [#37](https://github.com/inspec/train-habitat/pull/37) ([tas50](https://github.com/tas50)) <!-- 0.2.12 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
