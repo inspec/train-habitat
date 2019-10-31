@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.license     = "Apache-2.0"
 
   spec.files = %w{
-    README.md train-habitat.gemspec Gemfile
+    train-habitat.gemspec Gemfile
   } + Dir.glob(
     "lib/**/*", File::FNM_DOTMATCH
   ).reject { |f| File.directory?(f) }
