@@ -1,18 +1,16 @@
-<!-- latest_release 0.2.12 -->
-## [v0.2.12](https://github.com/inspec/train-habitat/tree/v0.2.12) (2019-10-31)
-
-#### Merged Pull Requests
-- Don&#39;t ship the readme in the gem artifact [#37](https://github.com/inspec/train-habitat/pull/37) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=0.2.11 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Don&#39;t ship the readme in the gem artifact [#37](https://github.com/inspec/train-habitat/pull/37) ([tas50](https://github.com/tas50)) <!-- 0.2.12 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v0.2.12](https://github.com/inspec/train-habitat/tree/v0.2.12) (2019-11-01)
+
+#### Merged Pull Requests
+- Don&#39;t ship the readme in the gem artifact [#37](https://github.com/inspec/train-habitat/pull/37) ([tas50](https://github.com/tas50))
+<!-- latest_stable_release -->
+
 ## [v0.2.11](https://github.com/inspec/train-habitat/tree/v0.2.11) (2019-08-15)
 
 #### Bug Fixes
@@ -22,7 +20,6 @@
 - this isnt supported here actually. [#34](https://github.com/inspec/train-habitat/pull/34) ([miah](https://github.com/miah))
 - Remove travis [#35](https://github.com/inspec/train-habitat/pull/35) ([miah](https://github.com/miah))
 - Move train dependencies into Gemfile from gemspec [#36](https://github.com/inspec/train-habitat/pull/36) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_stable_release -->
 
 ## [v0.2.7](https://github.com/inspec/train-habitat/tree/v0.2.7) (2019-07-25)
 
