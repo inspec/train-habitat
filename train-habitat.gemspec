@@ -14,9 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage    = "https://github.com/inspec/train-habitat"
   spec.license     = "Apache-2.0"
 
-  spec.files = %w{
-    train-habitat.gemspec Gemfile
-  } + Dir.glob(
+  spec.files = %w{ LICENSE } + Dir.glob(
     "lib/**/*", File::FNM_DOTMATCH
   ).reject { |f| File.directory?(f) }
   spec.require_paths = ["lib"]
