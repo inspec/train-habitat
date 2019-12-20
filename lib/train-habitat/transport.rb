@@ -1,6 +1,6 @@
 require "train"
 require "train/plugins"
-require "train-habitat/connection"
+require_relative "connection"
 
 module TrainPlugins
   module Habitat
