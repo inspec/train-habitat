@@ -2,9 +2,9 @@
 
 require "net/http"
 require "json"
-require "train-habitat/httpgateway"
-require "train-habitat/platform"
-require "train-habitat/transport"
+require_relative "httpgateway"
+require_relative "platform"
+require_relative "transport"
 
 module TrainPlugins
   module Habitat
