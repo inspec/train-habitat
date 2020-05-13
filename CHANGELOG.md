@@ -1,14 +1,15 @@
-<!-- latest_release 0.2.14 -->
-## [v0.2.14](https://github.com/inspec/train-habitat/tree/v0.2.14) (2020-01-01)
+<!-- latest_release 0.2.15 -->
+## [v0.2.15](https://github.com/inspec/train-habitat/tree/v0.2.15) (2020-05-13)
 
 #### Merged Pull Requests
-- Substitute require for require_relative [#39](https://github.com/inspec/train-habitat/pull/39) ([tas50](https://github.com/tas50))
+- Update rake requirement from ~&gt; 10.0 to ~&gt; 13.0 [#42](https://github.com/inspec/train-habitat/pull/42) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.2.13 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Update rake requirement from ~&gt; 10.0 to ~&gt; 13.0 [#42](https://github.com/inspec/train-habitat/pull/42) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.15 -->
 - Substitute require for require_relative [#39](https://github.com/inspec/train-habitat/pull/39) ([tas50](https://github.com/tas50)) <!-- 0.2.14 -->
 <!-- release_rollup -->
 
