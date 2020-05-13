@@ -1,9 +1,7 @@
 ---
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: 2.3
-AlignParameters:
-  Enabled: true
+  TargetRubyVersion: 2.4
 BlockDelimiters:
   Enabled: false
 Documentation:
@@ -16,13 +14,15 @@ HashSyntax:
   Enabled: true
 LineLength:
   Enabled: false
-Layout/AlignHash:
+Layout/HashAlignment:
   Enabled: false
 Layout/EmptyLineAfterMagicComment:
   Enabled: false
 Layout/EndOfLine:
   Enabled: true
   EnforcedStyle: lf
+Layout/ParameterAlignment:
+  Enabled: true
 Layout/SpaceAroundOperators:
   Enabled: false
 MethodLength:
@@ -42,8 +42,6 @@ NumericLiterals:
 Security/YAMLLoad:
   Enabled: false
 Style/AndOr:
-  Enabled: false
-Style/BracesAroundHashParameters:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false

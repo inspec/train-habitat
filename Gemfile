@@ -14,5 +14,5 @@ group :development do
   gem "pry", "~> 0.11"
   gem "rake", "~> 13.0"
   gem "rubocop", "~> 0.59"
-  gem "chefstyle", "0.13.2"
+  gem "chefstyle", "1.0.5"
 end
