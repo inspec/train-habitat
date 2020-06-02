@@ -1,14 +1,15 @@
-<!-- latest_release 0.2.16 -->
-## [v0.2.16](https://github.com/inspec/train-habitat/tree/v0.2.16) (2020-05-13)
+<!-- latest_release 0.2.17 -->
+## [v0.2.17](https://github.com/inspec/train-habitat/tree/v0.2.17) (2020-06-02)
 
 #### Merged Pull Requests
-- Update chefstyle requirement from 0.13.2 to 1.0.5 [#43](https://github.com/inspec/train-habitat/pull/43) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+- Update chefstyle requirement from 1.0.5 to 1.1.0 [#44](https://github.com/inspec/train-habitat/pull/44) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.2.13 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Update chefstyle requirement from 1.0.5 to 1.1.0 [#44](https://github.com/inspec/train-habitat/pull/44) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.17 -->
 - Update chefstyle requirement from 0.13.2 to 1.0.5 [#43](https://github.com/inspec/train-habitat/pull/43) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.16 -->
 - Update rake requirement from ~&gt; 10.0 to ~&gt; 13.0 [#42](https://github.com/inspec/train-habitat/pull/42) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.15 -->
 - Substitute require for require_relative [#39](https://github.com/inspec/train-habitat/pull/39) ([tas50](https://github.com/tas50)) <!-- 0.2.14 -->
