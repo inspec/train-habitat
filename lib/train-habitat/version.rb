@@ -2,6 +2,6 @@
 
 module TrainPlugins
   module Habitat
-    VERSION = "0.2.18"
+    VERSION = "0.2.19"
   end
 end
