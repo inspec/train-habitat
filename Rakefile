@@ -11,7 +11,7 @@ end
 
 namespace(:test) do
   desc "Run all integration tests"
-  task integration: %i(integration:sup_start integration:api_actual integration:cli_ssh_actual integration:sup_shutdown)
+  task integration: %i{integration:sup_start integration:api_actual integration:cli_ssh_actual integration:sup_shutdown}
 
   Rake::TestTask.new(:unit) do |t|
     t.libs.concat %w{test lib}
@@ -40,7 +40,7 @@ namespace(:test) do
     end
 
     desc "Use HTTP API to talk to supervisor"
-    task api: [:sup_start, :api_actual, :sup_shutdown]
+    task api: %i{sup_start api_actual sup_shutdown}
     Rake::TestTask.new(:api_actual) do |t|
       t.description = nil # Hide this task
       t.libs.push "lib"
@@ -52,7 +52,7 @@ namespace(:test) do
     end
 
     desc "Use ssh cli transport to talk to supervisor"
-    task cli_ssh: [:sup_start, :cli_ssh_actual, :sup_shutdown]
+    task cli_ssh: %i{sup_start cli_ssh_actual sup_shutdown}
     Rake::TestTask.new(:cli_ssh_actual) do |t|
       t.description = nil
       t.libs.concat %w{test lib}
@@ -67,4 +67,4 @@ end
 
 task test: "test:unit"
 
-task default: %i(test:unit lint)
+task default: %i{test:unit lint}
