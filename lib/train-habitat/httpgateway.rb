@@ -1,5 +1,5 @@
-require "uri"
-require "net/http"
+require "uri" unless defined?(URI)
+require "net/http" unless defined?(Net::HTTP)
 
 module TrainPlugins
   module Habitat

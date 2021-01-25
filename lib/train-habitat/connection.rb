@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "net/http"
-require "json"
+require "net/http" unless defined?(Net::HTTP)
+require "json" unless defined?(JSON)
 require_relative "httpgateway"
 require_relative "platform"
 require_relative "transport"

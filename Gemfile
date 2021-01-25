@@ -4,6 +4,11 @@ source "https://rubygems.org"
 
 gem "train-core", [">= 1.7.5", "< 4.0"]
 
+if Gem.ruby_version.to_s.start_with?("2.5")
+  # 16.7.23 required ruby 2.6+
+  gem "chef-utils", "< 16.7.23" # TODO: remove when we drop ruby 2.5
+end
+
 gemspec
 
 group :development do
@@ -13,6 +18,5 @@ group :development do
   gem "mocha", "~> 1.8"
   gem "pry", "~> 0.11"
   gem "rake", "~> 13.0"
-  gem "rubocop", "~> 0.59"
-  gem "chefstyle", "1.2.1"
+  gem "chefstyle", "1.5.9"
 end
