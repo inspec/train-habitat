@@ -1,31 +1,28 @@
-<!-- latest_release 0.2.22 -->
-## [v0.2.22](https://github.com/inspec/train-habitat/tree/v0.2.22) (2021-01-25)
-
-#### Merged Pull Requests
-- Update chefstyle requirement from 1.2.1 to 1.3.2 [#51](https://github.com/inspec/train-habitat/pull/51) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=0.2.13 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Update chefstyle requirement from 1.2.1 to 1.3.2 [#51](https://github.com/inspec/train-habitat/pull/51) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.22 -->
-- Update chefstyle requirement from 1.2.0 to 1.2.1 [#50](https://github.com/inspec/train-habitat/pull/50) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.21 -->
-- Update chefstyle requirement from 1.1.3 to 1.2.0 [#49](https://github.com/inspec/train-habitat/pull/49) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.20 -->
-- Update chefstyle requirement from 1.1.2 to 1.1.3 [#47](https://github.com/inspec/train-habitat/pull/47) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.19 -->
-- Update chefstyle requirement from 1.1.0 to 1.1.2 [#46](https://github.com/inspec/train-habitat/pull/46) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.18 -->
-- Update chefstyle requirement from 1.0.5 to 1.1.0 [#44](https://github.com/inspec/train-habitat/pull/44) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.17 -->
-- Update chefstyle requirement from 0.13.2 to 1.0.5 [#43](https://github.com/inspec/train-habitat/pull/43) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.16 -->
-- Update rake requirement from ~&gt; 10.0 to ~&gt; 13.0 [#42](https://github.com/inspec/train-habitat/pull/42) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.15 -->
-- Substitute require for require_relative [#39](https://github.com/inspec/train-habitat/pull/39) ([tas50](https://github.com/tas50)) <!-- 0.2.14 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v0.2.22](https://github.com/inspec/train-habitat/tree/v0.2.22) (2021-01-25)
+
+#### Merged Pull Requests
+- Substitute require for require_relative [#39](https://github.com/inspec/train-habitat/pull/39) ([tas50](https://github.com/tas50))
+- Update rake requirement from ~&gt; 10.0 to ~&gt; 13.0 [#42](https://github.com/inspec/train-habitat/pull/42) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+- Update chefstyle requirement from 0.13.2 to 1.0.5 [#43](https://github.com/inspec/train-habitat/pull/43) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+- Update chefstyle requirement from 1.0.5 to 1.1.0 [#44](https://github.com/inspec/train-habitat/pull/44) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+- Update chefstyle requirement from 1.1.0 to 1.1.2 [#46](https://github.com/inspec/train-habitat/pull/46) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+- Update chefstyle requirement from 1.1.2 to 1.1.3 [#47](https://github.com/inspec/train-habitat/pull/47) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+- Update chefstyle requirement from 1.1.3 to 1.2.0 [#49](https://github.com/inspec/train-habitat/pull/49) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+- Update chefstyle requirement from 1.2.0 to 1.2.1 [#50](https://github.com/inspec/train-habitat/pull/50) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+- Update chefstyle requirement from 1.2.1 to 1.3.2 [#51](https://github.com/inspec/train-habitat/pull/51) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_stable_release -->
+
 ## [v0.2.13](https://github.com/inspec/train-habitat/tree/v0.2.13) (2019-11-19)
 
 #### Merged Pull Requests
 - Ship the license file and skip gemfile/gemspec [#38](https://github.com/inspec/train-habitat/pull/38) ([tas50](https://github.com/tas50))
-<!-- latest_stable_release -->
 
 ## [v0.2.12](https://github.com/inspec/train-habitat/tree/v0.2.12) (2019-11-01)
 
