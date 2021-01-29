@@ -1,7 +1,15 @@
-<!-- latest_release -->
+<!-- latest_release 0.2.23 -->
+## [v0.2.23](https://github.com/inspec/train-habitat/tree/v0.2.23) (2021-01-29)
+
+#### Merged Pull Requests
+- Update chefstyle requirement from 1.5.9 to 1.6.1 [#52](https://github.com/inspec/train-habitat/pull/52) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=0.2.22 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Update chefstyle requirement from 1.5.9 to 1.6.1 [#52](https://github.com/inspec/train-habitat/pull/52) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.23 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
