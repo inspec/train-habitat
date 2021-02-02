@@ -18,5 +18,5 @@ group :development do
   gem "mocha", "~> 1.8"
   gem "pry", "~> 0.11"
   gem "rake", "~> 13.0"
-  gem "chefstyle", "1.6.1"
+  gem "chefstyle", "1.6.2"
 end
