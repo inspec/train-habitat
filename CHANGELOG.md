@@ -1,14 +1,15 @@
-<!-- latest_release 0.2.30 -->
-## [v0.2.30](https://github.com/inspec/train-habitat/tree/v0.2.30) (2021-05-10)
+<!-- latest_release 0.2.31 -->
+## [v0.2.31](https://github.com/inspec/train-habitat/tree/v0.2.31) (2021-05-29)
 
 #### Merged Pull Requests
-- Update chefstyle requirement from 1.7.5 to 2.0.3 [#59](https://github.com/inspec/train-habitat/pull/59) ([dependabot[bot]](https://github.com/dependabot[bot]))
+- Update chefstyle requirement from 2.0.3 to 2.0.4 [#60](https://github.com/inspec/train-habitat/pull/60) ([dependabot[bot]](https://github.com/dependabot[bot]))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.2.22 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Update chefstyle requirement from 2.0.3 to 2.0.4 [#60](https://github.com/inspec/train-habitat/pull/60) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 0.2.31 -->
 - Update chefstyle requirement from 1.7.5 to 2.0.3 [#59](https://github.com/inspec/train-habitat/pull/59) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 0.2.30 -->
 - Upgrade to GitHub-native Dependabot [#58](https://github.com/inspec/train-habitat/pull/58) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.29 -->
 - Update chefstyle requirement from 1.7.4 to 1.7.5 [#57](https://github.com/inspec/train-habitat/pull/57) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot])) <!-- 0.2.28 -->
