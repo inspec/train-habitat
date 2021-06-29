@@ -13,17 +13,13 @@ slack:
 rubygems:
   - train-habitat
 
-promote:
-  actions:
-    - built_in:rollover_changelog
-    - built_in:publish_rubygems
-
 github:
  delete_branch_on_merge: true
  minor_bump_labels:
   - "Expeditor/Bump Minor Version"
  version_tag_format: v{{version}}
- release_branch:
+
+release_branches:
   - master
 
 changelog:
@@ -33,17 +29,24 @@ changelog:
   - "Type/Enhancement": "Enhancements"
   - "Type/Bug": "Bug Fixes"
 
-merge_actions:
- - built_in:bump_version:
-    ignore_labels:
-     - "Expeditor/Skip Version Bump"
-     - "Expeditor/Skip All"
- - bash:.expeditor/update_version.sh:
-    only_if: built_in:bump_version
- - built_in:update_changelog:
-    ignore_labels:
-     - "Expeditor/Skip Changelog"
-     - "Expeditor/Skip All"
- - built_in:build_gem:
-     only_if: built_in:bump_version
+subscriptions:
+  - workload: pull_request_merged:{{github_repo}}:{{release_branch}}:*
+    actions:
+      - built_in:bump_version:
+         ignore_labels:
+          - "Expeditor/Skip Version Bump"
+          - "Expeditor/Skip All"
+      - bash:.expeditor/update_version.sh:
+         only_if: built_in:bump_version
+      - built_in:update_changelog:
+         ignore_labels:
+          - "Expeditor/Skip Changelog"
+          - "Expeditor/Skip All"
+      - built_in:build_gem:
+         only_if: built_in:bump_version
+  - workload: project_promoted:{{agent_id}}:*
+    actions:
+     - built_in:rollover_changelog
+     - built_in:publish_rubygems
+
 
