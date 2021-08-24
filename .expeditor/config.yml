@@ -20,7 +20,7 @@ github:
  version_tag_format: v{{version}}
 
 release_branches:
-  - master
+  - main
 
 changelog:
  rollup_header: Changes not yet released to rubygems.org
