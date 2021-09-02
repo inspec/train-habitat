@@ -1,14 +1,15 @@
-<!-- latest_release 0.2.32 -->
-## [v0.2.32](https://github.com/inspec/train-habitat/tree/v0.2.32) (2021-07-01)
+<!-- latest_release 0.2.33 -->
+## [v0.2.33](https://github.com/inspec/train-habitat/tree/v0.2.33) (2021-09-02)
 
 #### Merged Pull Requests
-- Updating expeditor configuration [#62](https://github.com/inspec/train-habitat/pull/62) ([jayashrig158](https://github.com/jayashrig158))
+- Replace deprecated --without flag with bundle config [#67](https://github.com/inspec/train-habitat/pull/67) ([skeshari12](https://github.com/skeshari12))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.2.22 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Replace deprecated --without flag with bundle config [#67](https://github.com/inspec/train-habitat/pull/67) ([skeshari12](https://github.com/skeshari12)) <!-- 0.2.33 -->
 - Updating expeditor configuration [#62](https://github.com/inspec/train-habitat/pull/62) ([jayashrig158](https://github.com/jayashrig158)) <!-- 0.2.32 -->
 - Update chefstyle requirement from 2.0.3 to 2.0.4 [#60](https://github.com/inspec/train-habitat/pull/60) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 0.2.31 -->
 - Update chefstyle requirement from 1.7.5 to 2.0.3 [#59](https://github.com/inspec/train-habitat/pull/59) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 0.2.30 -->
