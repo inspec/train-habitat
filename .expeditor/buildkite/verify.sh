@@ -9,7 +9,8 @@ bundle --version
 
 echo "--- bundle install"
 bundle config --local path vendor/bundle
-bundle install --jobs=7 --retry=3 --without tools maintenance deploy
+bundle config set --local without tools maintenance deploy
+bundle install --jobs=7 --retry=3
 
 echo "+++ bundle exec rake lint"
 bundle exec rake lint
