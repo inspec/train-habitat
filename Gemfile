@@ -15,7 +15,7 @@ group :development do
   gem "byebug", "~> 11.0"
   gem "m", "~> 1.5"
   gem "minitest", "~> 5.11"
-  gem "mocha", "~> 1.8"
+  gem "mocha", "~> 2.0"
   gem "pry", "~> 0.11"
   gem "rake", "~> 13.0"
   gem "chefstyle", "2.2.0"
