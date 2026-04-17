@@ -1,14 +1,15 @@
-<!-- latest_release 0.2.37 -->
-## [v0.2.37](https://github.com/inspec/train-habitat/tree/v0.2.37) (2022-01-06)
+<!-- latest_release 0.2.38 -->
+## [v0.2.38](https://github.com/inspec/train-habitat/tree/v0.2.38) (2026-04-17)
 
 #### Merged Pull Requests
-- Update chefstyle requirement from 2.1.3 to 2.2.0 [#72](https://github.com/inspec/train-habitat/pull/72) ([dependabot[bot]](https://github.com/dependabot[bot]))
+- CHEF-28961 Removed SLA Section from README.md [#80](https://github.com/inspec/train-habitat/pull/80) ([Saburesh07](https://github.com/Saburesh07))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.2.22 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-28961 Removed SLA Section from README.md [#80](https://github.com/inspec/train-habitat/pull/80) ([Saburesh07](https://github.com/Saburesh07)) <!-- 0.2.38 -->
 - Update chefstyle requirement from 2.1.3 to 2.2.0 [#72](https://github.com/inspec/train-habitat/pull/72) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 0.2.37 -->
 - Update chefstyle requirement from 2.1.2 to 2.1.3 [#71](https://github.com/inspec/train-habitat/pull/71) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 0.2.36 -->
 - Update chefstyle requirement from 2.1.0 to 2.1.2 [#70](https://github.com/inspec/train-habitat/pull/70) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 0.2.35 -->
